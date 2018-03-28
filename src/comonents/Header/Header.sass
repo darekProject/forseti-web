@@ -1,0 +1,36 @@
+@import "../../styles/_variables.sass"
+
+.navbar
+  min-height: 100px
+  display: flex
+  justify-content: center
+  align-items: center
+  & > .container
+    border-bottom: 3px solid $blue-medium
+
+.navbar-brand
+  color: $blue-black
+  font-family: $font-orb
+  font-weight: 600
+  font-size: 26px
+
+.dropdown-toggle::after
+  display: none
+
+.nav-item
+  .nav-link
+    i
+      color: $blue-medium
+      &:hover
+        color: $blue-medium
+
+.dropdown-menu
+  border: none
+  border-radius: 0
+  background: $blue-medium
+  .nav-link
+    color: #ffffff
+    font-family: $font-can
+    font-size: 18px
+    &:hover
+      font-weight: 600
