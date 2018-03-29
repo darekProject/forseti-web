@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.error-info {
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  font-family: "Cantarell", sans-serif;
+  font-size: 14px;
+  color: red; }
+
+.search-wrapper {
+  margin: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .search-wrapper h2 {
+    font-size: 38px;
+    font-family: "Cantarell", sans-serif;
+    font-weight: 700;
+    color: #0D47A1; }
+  .search-wrapper #search {
+    margin-top: 100px;
+    position: relative;
+    max-width: 700px; }
+    .search-wrapper #search input {
+      width: 350px;
+      border: none;
+      border-bottom: 2px solid #64B5F6;
+      margin-right: 45px;
+      padding-left: 15px;
+      height: 40px; }
+      .search-wrapper #search input:focus {
+        outline: none;
+        border-bottom: 2px solid #0D47A1; }
+    .search-wrapper #search button {
+      width: 150px;
+      height: 40px;
+      border: none;
+      background: #64B5F6;
+      color: #ffffff;
+      font-family: "Cantarell", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .5s ease; }
+      .search-wrapper #search button:hover {
+        background: #0D47A1;
+        border-radius: 5px; }

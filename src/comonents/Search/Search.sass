@@ -1,0 +1,49 @@
+@import "../../styles/_variables.sass"
+
+.error-info
+  position: absolute
+  left: 10px
+  top: 50px
+  font-family: $font-can
+  font-size: 14px
+  color: red
+
+.search-wrapper
+  margin: 100px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  h2
+    font-size: 38px
+    font-family: $font-can
+    font-weight: 700
+    color: $blue-black
+  #search
+    margin-top: 100px
+    position: relative
+    max-width: 700px
+    input
+      width: 350px
+      border: none
+      border-bottom: 2px solid $blue-medium
+      margin-right: 45px
+      padding-left: 15px
+      height: 40px
+      &:focus
+        outline: none
+        border-bottom: 2px solid $blue-black
+    button
+      width: 150px
+      height: 40px
+      border: none
+      background: $blue-medium
+      color: #ffffff
+      font-family: $font-can
+      font-size: 18px
+      font-weight: 700
+      cursor: pointer
+      transition: all .5s ease
+      &:hover
+        background: $blue-black
+        border-radius: 5px

@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.error-number {
+  font-family: "Cantarell", sans-serif;
+  font-size: 18px;
+  color: #EA4335; }
+
+.data_box {
+  min-width: 400px;
+  display: flex;
+  justify-content: center; }
+  .data_box div + div {
+    margin-left: 80px; }
+  .data_box div {
+    font-size: 60px; }
+    .data_box div span {
+      font-size: 24px;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 600;
+      margin-right: 15px; }
+  .data_box div:first-child {
+    color: #34A853; }
+  .data_box div:last-child {
+    color: #EA4335; }
+    .data_box div:last-child svg {
+      position: relative;
+      top: 23px; }
