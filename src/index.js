@@ -8,6 +8,8 @@ import {Route, BrowserRouter} from 'react-router-dom';
 
 import './index.css';
 import App from './containers/App';
+import SignIn from './comonents/SignIn/SignIn';
+import SignUp from './comonents/SignUp/SignUp';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -17,7 +19,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Fragment>
-                <Route path="/" component={App}/>
+                <Route exact path="/" component={App}/>
+                <Route exact path="/SignIn" component={SignIn}/>
+                <Route exact path="/SignUp" component={SignUp}/>
             </Fragment>
         </BrowserRouter>
     </Provider>,
