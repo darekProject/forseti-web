@@ -27,7 +27,6 @@ export const signUpUser = ({name, surname, email, password}) => async dispatch =
 
         dispatch({type: AUTH_USER, payload: userData.data});
         sessionStorage.setItem('token', userData.data.token);
-        sessionStorage.setItem('fullName', `${userData.data.name} ${userData.data.surname}`);
         sessionStorage.setItem('idUser', userData.data.id);
     } catch (e) {
         return dispatch(authError('Error in create account'));
