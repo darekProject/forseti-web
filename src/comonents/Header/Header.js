@@ -1,17 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import * as actions from '../../actions';
 
 import './Header.css';
 
 class Header extends Component {
 
     renderLinks = () => {
-        if (null) {
-            return <Link className="nav-link" to="/">Sign out</Link>
+        if (this.props.authenticated) {
+            return <Link className="nav-link" onClick={() => this.props.signOutUser()} to="/">Sign out</Link>
         } else {
             return <Fragment>
-                <Link className="nav-link" to="/">Sign in</Link>
-                <Link className="nav-link" to="/">Sign up</Link>
+                <Link className="nav-link" to="/signin">Sign in</Link>
+                <Link className="nav-link" to="/signup">Sign up</Link>
             </Fragment>
         }
     };
@@ -49,4 +51,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        authenticated: state.user.authenticated,
+    }
+};
+
+export default connect(mapStateToProps, actions)(Header);

@@ -1,0 +1,78 @@
+@import "../../styles/_variables.sass"
+
+.input-box
+  display: flex
+  flex-direction: column
+  .error-input
+    font-family: $font-can
+    font-size: 12px
+    margin: 5px 0 0 5px
+    color: $red
+
+.input-box + .input-box
+  margin-top: 20px
+
+.box-sign
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 100vh
+  .sign-wrapper
+    height: 550px
+    width: 350px
+    box-shadow: 0 0 30px #eeeeee
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    & > div > div
+      display: flex
+      align-items: center
+      justify-content: center
+      a
+        text-decoration: none
+        font-family: $font-can
+        font-size: 14px
+        color: #000000
+      p
+        margin: 0
+        font-family: $font-can
+        font-size: 14px
+      span
+        margin: 15px 15px
+    .main-title
+      color: $blue-black
+      font-family: $font-orb
+      font-weight: 600
+      font-size: 26px
+      text-align: center
+    .sign-style
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      width: 100%
+      input
+        font-family: $font-can
+        width: 300px
+        height: 40px
+        padding: 5px 15px
+        font-size: 12px
+        border-radius: 5px
+        border: 1px solid #eeeeee
+      button
+        width: 150px
+        height: 40px
+        border: none
+        background: $blue-medium
+        color: #ffffff
+        font-family: $font-can
+        font-size: 18px
+        font-weight: 700
+        cursor: pointer
+        transition: all .5s ease
+        margin-top: 20px
+        &:hover
+          background: $blue-black
+          border-radius: 5px
+

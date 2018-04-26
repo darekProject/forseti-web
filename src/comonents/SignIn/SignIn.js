@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 
+import './SignIn.css';
+
 const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
     <div className="input-box">
         <input {...input} placeholder={label} type={type}/>
@@ -41,7 +43,7 @@ class SignIn extends Component {
                                     <Link to="/signup">Sign Up </Link>
                                 </div>
                             </div>
-                            <form id="signup" className="sign-style"
+                            <form id="signin" className="sign-style"
                                   onSubmit={handleSubmit((values) => this.handleFormSubmit(values))}>
                                 <Field type="text" name="email" component={renderField} label="Add your email"/>
                                 <Field type="password" name="password" component={renderField}

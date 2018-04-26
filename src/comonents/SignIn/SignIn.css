@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.input-box {
+  display: flex;
+  flex-direction: column; }
+  .input-box .error-input {
+    font-family: "Cantarell", sans-serif;
+    font-size: 12px;
+    margin: 5px 0 0 5px;
+    color: #EA4335; }
+
+.input-box + .input-box {
+  margin-top: 20px; }
+
+.box-sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; }
+  .box-sign .sign-wrapper {
+    height: 550px;
+    width: 350px;
+    box-shadow: 0 0 30px #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; }
+    .box-sign .sign-wrapper > div > div {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .box-sign .sign-wrapper > div > div a {
+        text-decoration: none;
+        font-family: "Cantarell", sans-serif;
+        font-size: 14px;
+        color: #000000; }
+      .box-sign .sign-wrapper > div > div p {
+        margin: 0;
+        font-family: "Cantarell", sans-serif;
+        font-size: 14px; }
+      .box-sign .sign-wrapper > div > div span {
+        margin: 15px 15px; }
+    .box-sign .sign-wrapper .main-title {
+      color: #0D47A1;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      text-align: center; }
+    .box-sign .sign-wrapper .sign-style {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%; }
+      .box-sign .sign-wrapper .sign-style input {
+        font-family: "Cantarell", sans-serif;
+        width: 300px;
+        height: 40px;
+        padding: 5px 15px;
+        font-size: 12px;
+        border-radius: 5px;
+        border: 1px solid #eeeeee; }
+      .box-sign .sign-wrapper .sign-style button {
+        width: 150px;
+        height: 40px;
+        border: none;
+        background: #64B5F6;
+        color: #ffffff;
+        font-family: "Cantarell", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all .5s ease;
+        margin-top: 20px; }
+        .box-sign .sign-wrapper .sign-style button:hover {
+          background: #0D47A1;
+          border-radius: 5px; }
