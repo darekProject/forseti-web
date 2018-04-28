@@ -7,9 +7,12 @@ import registerServiceWorker from './registerServiceWorker';
 import {Route, BrowserRouter} from 'react-router-dom';
 
 import './index.css';
+
 import App from './containers/App';
 import SignIn from './comonents/SignIn/SignIn';
 import SignUp from './comonents/SignUp/SignUp';
+import CheckNumber from "./containers/CheckNumber/CheckNumber";
+
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -19,7 +22,8 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Fragment>
-                <Route exact path="/" component={App}/>
+                <Route path="/" component={App}/>
+                <Route path="/CheckNumber" component={CheckNumber}/>
                 <Route exact path="/SignIn" component={SignIn}/>
                 <Route exact path="/SignUp" component={SignUp}/>
             </Fragment>
