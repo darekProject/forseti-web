@@ -8,7 +8,7 @@ import NumberData from "../../comonents/NumberData/NumberData";
 class CheckNumber extends Component {
 
     handleFromSearch = ({number}) => {
-        this.props.getInfoAboutNumber({number});
+        this.props.getThumbsByAccountNum({number});
     };
 
     handleSendThumbs = (value) => {
@@ -24,7 +24,7 @@ class CheckNumber extends Component {
             thumbsSetError
         } = this.props;
 
-        const props = {
+        const propsNumberData = {
             numData,
             numError,
             thumbsSet,
@@ -32,9 +32,14 @@ class CheckNumber extends Component {
             setThumbs: (values) => this.handleSendThumbs(values)
         };
 
+        const searchProps = {
+            title: 'Check account number',
+            handleSearch: ({number}) => this.handleFromSearch({number})
+        };
+
         return <Fragment>
-            <Search handleSearch={({number}) => this.handleFromSearch({number})}/>
-            <NumberData {...props}/>
+            <Search  {...searchProps}/>
+            <NumberData {...propsNumberData}/>
         </Fragment>
     }
 }

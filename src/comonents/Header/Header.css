@@ -17,10 +17,14 @@
 .dropdown-toggle::after {
   display: none; }
 
-.nav-item .nav-link i {
-  color: #64B5F6; }
-  .nav-item .nav-link i:hover {
+.nav-item {
+  min-width: 170px;
+  font-family: "Cantarell", sans-serif;
+  font-weight: 600; }
+  .nav-item .nav-link i {
     color: #64B5F6; }
+    .nav-item .nav-link i:hover {
+      color: #64B5F6; }
 
 .dropdown-menu {
   border: none;

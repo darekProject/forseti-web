@@ -11,7 +11,7 @@ import {
 
 const ROOT_URL = 'http://localhost:5050';
 
-export const getInfoAboutNumber = ({number}) => async dispatch => {
+export const getThumbsByAccountNum = ({number}) => async dispatch => {
     try {
 
         // const data = await axios.post(`${ROOT_URL}/number`, {number}); // we do not have api :/

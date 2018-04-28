@@ -27,9 +27,15 @@ class Header extends Component {
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <a className="navbar-brand" href="">FORSETI</a>
+                    <a className="navbar-brand" href="/">FORSETI</a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/checknumber">Get/Set Thumbs</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/getinfo">Get Info</a>
+                            </li>
                         </ul>
                         <div className="navbar-collapse collapse">
                             <ul className="nav navbar-nav ml-auto">

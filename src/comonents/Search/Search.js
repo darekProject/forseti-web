@@ -22,7 +22,7 @@ class Search extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 search-wrapper">
-                        <h2>Check account number</h2>
+                        <h2>{this.props.title}</h2>
                         <form id="search" onSubmit={handleSubmit((values) => this.props.handleSearch(values))}>
                             <Field type="text"
                                    name="number"
