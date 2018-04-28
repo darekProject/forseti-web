@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import * as actions from '../../actions';
 
 import './NumberData.css';
 
 class NumberData extends Component {
-
-    handleSendThumbs = (value) => {
-        this.props.sendThumbs(value);
-    };
 
     renderMessageAfterSendThumbs() {
         if (this.props.thumbsSet === 'OK') {
@@ -27,11 +21,11 @@ class NumberData extends Component {
             const thumbsDown = this.props.numData.down;
 
             return <div className="data_box">
-                <div onClick={() => this.handleSendThumbs(1)}>
+                <div onClick={() => this.props.setThumbs(1)}>
                     <span className="value">{thumbsUp}</span>
                     <i className="fas fa-thumbs-up"></i>
                 </div>
-                <div onClick={() => this.handleSendThumbs(-1)}>
+                <div onClick={() => this.props.setThumbs(-1)}>
                     <span className="value">{thumbsDown}</span>
                     <i className="fas fa-thumbs-down"></i>
                 </div>
@@ -64,13 +58,5 @@ class NumberData extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        numData: state.number.data,
-        numError: state.number.error,
-        thumbsSet: state.number.thumbsSet,
-        thumbsSetError: state.number.thumbsSetError
-    }
-};
 
-export default connect(mapStateToProps, actions)(NumberData);
+export default NumberData;

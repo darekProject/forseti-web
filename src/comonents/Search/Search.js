@@ -15,10 +15,6 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 
 class Search extends Component {
 
-    handleFromSubmit = ({number}) => {
-        this.props.getInfoAboutNumber({number});
-    };
-
     render() {
         const {handleSubmit} = this.props;
 
@@ -27,7 +23,7 @@ class Search extends Component {
                 <div className="row">
                     <div className="col-lg-12 search-wrapper">
                         <h2>Check account number</h2>
-                        <form id="search" onSubmit={handleSubmit((values) => this.handleFromSubmit(values))}>
+                        <form id="search" onSubmit={handleSubmit((values) => this.props.handleSearch(values))}>
                             <Field type="text"
                                    name="number"
                                    component={renderField}
