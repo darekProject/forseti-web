@@ -1,18 +1,26 @@
 import axios from 'axios';
-import {NUMBER_ERROR, NUMBER_OK, AUTH_ERROR, AUTH_USER, UNAUTH_USER} from "./type";
+import {
+    NUMBER_ERROR,
+    NUMBER_OK,
+    THUMBS_UPDATA,
+    THUMBS_ERROR,
+    AUTH_ERROR,
+    AUTH_USER,
+    UNAUTH_USER
+} from "./type";
 
 const ROOT_URL = 'http://localhost:5050';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
-  try {
+    try {
 
-      // const data = await axios.post(`${ROOT_URL}/number`, {number}); // we do not have api :/
-      const data = { up: 100, down: 20};
+        // const data = await axios.post(`${ROOT_URL}/number`, {number}); // we do not have api :/
+        const data = {up: 100, down: 20};
 
-      dispatch({type: NUMBER_OK, payload: data});
-  } catch (err) {
-      dispatch({type: NUMBER_ERROR});
-  }
+        dispatch({type: NUMBER_OK, payload: data});
+    } catch (err) {
+        dispatch({type: NUMBER_ERROR});
+    }
 };
 
 export const signUpUser = ({name, surname, email, password}) => async dispatch => {
@@ -62,5 +70,28 @@ export const authError = (error) => {
     return {
         type: AUTH_ERROR,
         payload: error
+    }
+};
+
+export const sendThumbs = value => async dispatch => {
+    try {
+        // const res = await axios.put(`${ROOT_URL}/thumbs`, {
+        //     value
+        // });
+
+        const res = {
+            data: {
+                status: 'OK',
+                data: {
+                    up: 101,
+                    down: 50
+                }
+            },
+        };
+
+        dispatch({type: THUMBS_UPDATA, payload: res.data})
+
+    } catch (e) {
+        dispatch({typ: THUMBS_ERROR});
     }
 };
