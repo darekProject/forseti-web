@@ -12,15 +12,25 @@ class ViewInfo extends Component {
         this.props.getInfoAboutNumber({number});
     };
 
+    renderComments = () => {
+        return this.props.infoData ? <Comments comments={this.props.infoData.comments}/> : null
+    };
+
     render() {
         const title = 'Get information about account number';
 
         return <Fragment>
             <Search title={title} handleSearch={({number}) => this.handleFromSearch({number})}/>
-            <InfoPerNumber/>
-            <Comments/>
+            <InfoPerNumber bankName='BZWBK' departueName='Oddział w Nowym Targu nr 12'/>
+            {this.renderComments()}
         </Fragment>
     }
 }
 
-export default connect(null, actions)(ViewInfo);
+const mapStateToProps = store => {
+    return {
+        infoData: store.number.infoData
+    }
+};
+
+export default connect(mapStateToProps, actions)(ViewInfo);

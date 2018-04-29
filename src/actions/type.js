@@ -1,5 +1,7 @@
 export const NUMBER_OK = 'number_ok';
 export const NUMBER_ERROR = 'number_error';
+export const NUMBER_INFO = 'number_info';
+
 export const THUMBS_UPDATA = 'thumbs_updata';
 export const THUMBS_ERROR = 'number_error';
 

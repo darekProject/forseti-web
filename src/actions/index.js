@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     NUMBER_ERROR,
     NUMBER_OK,
+    NUMBER_INFO,
     THUMBS_UPDATA,
     THUMBS_ERROR,
     AUTH_ERROR,
@@ -10,6 +11,28 @@ import {
 } from "./type";
 
 const ROOT_URL = 'http://localhost:5050';
+
+export const getInfoAboutNumber = ({number}) => async dispatch => {
+    try {
+        // const data = await axios.post(`${ROOT_URL}/`, {number}); // we do not have api :/
+        const data = {
+            comments: [
+                {
+                    name: 'Jan Kowalski',
+                    content: 'Konto sprawdzone polecam na 100%'
+                },
+                {
+                    name: 'Maria Kowalski',
+                    content: 'Robilam przelewa dwa razy. Polecam tego numerowicza!!!'
+                }
+            ]
+        }
+
+        dispatch({type: NUMBER_INFO, payload: data})
+    } catch (e) {
+        dispatch({type: NUMBER_ERROR});
+    }
+}
 
 export const getThumbsByAccountNum = ({number}) => async dispatch => {
     try {

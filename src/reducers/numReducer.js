@@ -1,4 +1,4 @@
-import {NUMBER_ERROR, NUMBER_OK, THUMBS_ERROR, THUMBS_UPDATA} from "../actions/type";
+import {NUMBER_ERROR, NUMBER_OK, THUMBS_ERROR, THUMBS_UPDATA, NUMBER_INFO} from "../actions/type";
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -11,6 +11,11 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 error: true
+            };
+        case NUMBER_INFO:
+            return {
+                ...state,
+                infoData: action.payload
             };
         case THUMBS_UPDATA:
             return {
