@@ -19,7 +19,7 @@ class SignIn extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.authenticated) {
-            this.props.history.push('/singin');
+            this.props.history.push('/sign');
         }
     }
 

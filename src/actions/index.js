@@ -7,10 +7,11 @@ import {
     THUMBS_ERROR,
     AUTH_ERROR,
     AUTH_USER,
+    USER_ADDED,
     UNAUTH_USER
 } from "./type";
 
-const ROOT_URL = 'http://localhost:5050';
+const ROOT_URL = 'http://localhost:8080/api';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
     try {
@@ -49,16 +50,12 @@ export const getThumbsByAccountNum = ({number}) => async dispatch => {
 export const signUpUser = ({name, surname, email, password}) => async dispatch => {
 
     try {
-        const userData = await axios.post(`${ROOT_URL}/api/user/registration`, {
-            name,
-            surname,
+        await axios.post(`${ROOT_URL}/signup/`, {
             email,
             password
         });
 
-        dispatch({type: AUTH_USER, payload: userData.data});
-        sessionStorage.setItem('token', userData.data.token);
-        sessionStorage.setItem('idUser', userData.data.id);
+        dispatch({type: USER_ADDED});
     } catch (e) {
         return dispatch(authError('Error in create account'));
     }

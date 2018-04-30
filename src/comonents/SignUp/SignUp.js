@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as actions from '../../actions'
+import PropTypes from 'prop-types';
+import * as actions from '../../actions';
 
 import './SignUp.css';
 
@@ -16,13 +17,29 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 
 class SignUp extends Component {
 
+    static propTypes = {
+        userAdded: PropTypes.bool,
+        errorMessage: PropTypes.string,
+        signUpUser: PropTypes.func,
+        handleSubmit: PropTypes.func
+    };
+
+    static defaultProps = {
+        userAdded: false,
+        errorMessage: false,
+        signUpUser: () => {
+        },
+        handleSubmit: () => {
+        }
+    };
+
     componentWillReceiveProps(nextProps) {
-        if (nextProps.authenticated) {
+        if (nextProps.userAdded) {
             this.props.history.push('/signin');
         }
     }
 
-    handleFormSubmit = ({email, password, confirmPassword}) => {
+    handleFormSubmit = ({email, password}) => {
         this.props.signUpUser({email, password});
     };
 
@@ -84,7 +101,7 @@ const reduxFormSignUp = reduxForm({
 
 const mapStateToProps = state => {
     return {
-        authenticated: state.user.authenticated,
+        userAdded: state.user.userAdded,
         errorMessage: state.user.error
     }
 };
