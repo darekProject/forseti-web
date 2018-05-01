@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getToken, setToken, removeToken, setUserName} from '../utils/utlis';
 import {
     NUMBER_ERROR,
     NUMBER_OK,
@@ -11,7 +12,7 @@ import {
     UNAUTH_USER
 } from "./type";
 
-const ROOT_URL = 'http://localhost:8080/api';
+const ROOT_URL = 'http://localhost:8080';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
     try {
@@ -47,10 +48,11 @@ export const getThumbsByAccountNum = ({number}) => async dispatch => {
     }
 };
 
-export const signUpUser = ({name, surname, email, password}) => async dispatch => {
+export const signUpUser = ({username, email, password}) => async dispatch => {
 
     try {
-        await axios.post(`${ROOT_URL}/signup/`, {
+        await axios.post(`${ROOT_URL}/api/signup/`, {
+            username,
             email,
             password
         });
@@ -62,27 +64,27 @@ export const signUpUser = ({name, surname, email, password}) => async dispatch =
 
 };
 
-export const signInUser = ({email, password}) => async dispatch => {
+export const signInUser = ({username, password}) => async dispatch => {
     try {
 
-        const userData = await axios.post(`${ROOT_URL}/api/user/login`, {
-            email,
-            password
-        });
+        const userData = await axios.post(`${ROOT_URL}/login`,
+            {
+                username,
+                password
+            });
 
+        setToken(userData.data.authorization);
+        setUserName(userData.data.username);
         dispatch({type: AUTH_USER, payload: userData.data});
-        sessionStorage.setItem('token', userData.data.token);
-        sessionStorage.setItem('fullName', `${userData.data.name} ${userData.data.surname}`);
-        sessionStorage.setItem('idUser', userData.data.id);
 
     } catch (e) {
+        console.log(e);
         return dispatch(authError('Error in login'));
     }
 };
 
 export const signOutUser = () => {
-    sessionStorage.removeItem('token');
-
+    removeToken();
     return {type: UNAUTH_USER};
 };
 

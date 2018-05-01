@@ -19,7 +19,7 @@ class SignUp extends Component {
 
     static propTypes = {
         userAdded: PropTypes.bool,
-        errorMessage: PropTypes.string,
+        errorMessage: PropTypes.bool,
         signUpUser: PropTypes.func,
         handleSubmit: PropTypes.func
     };
@@ -39,8 +39,8 @@ class SignUp extends Component {
         }
     }
 
-    handleFormSubmit = ({email, password}) => {
-        this.props.signUpUser({email, password});
+    handleFormSubmit = ({username, email, password}) => {
+        this.props.signUpUser({username, email, password});
     };
 
     render() {
@@ -61,6 +61,7 @@ class SignUp extends Component {
                             </div>
                             <form id="signup" className="sign-style"
                                   onSubmit={handleSubmit((values) => this.handleFormSubmit(values))}>
+                                <Field type="text" name="username" component={renderField} label="Add your username"/>
                                 <Field type="text" name="email" component={renderField} label="Add your email"/>
                                 <Field type="password" name="password" component={renderField}
                                        label="Add your password"/>
@@ -79,7 +80,9 @@ class SignUp extends Component {
 const validate = values => {
     const errors = {};
 
-    if (!values.email) {
+    if (!values.username) {
+        errors.username = 'Add your username!'
+    } else if (!values.email) {
         errors.email = 'Add your email!'
     } else if (!values.password) {
         errors.password = 'Add your password!'

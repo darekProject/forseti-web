@@ -19,12 +19,12 @@ class SignIn extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.authenticated) {
-            this.props.history.push('/sign');
+            this.props.history.push('/checknumber');
         }
     }
 
-    handleFormSubmit = ({email, password}) => {
-        this.props.signInUser({email, password});
+    handleFormSubmit = ({username, password}) => {
+        this.props.signInUser({username, password});
     };
 
     render() {
@@ -45,7 +45,7 @@ class SignIn extends Component {
                             </div>
                             <form id="signin" className="sign-style"
                                   onSubmit={handleSubmit((values) => this.handleFormSubmit(values))}>
-                                <Field type="text" name="email" component={renderField} label="Add your email"/>
+                                <Field type="text" name="username" component={renderField} label="Username"/>
                                 <Field type="password" name="password" component={renderField}
                                        label="Add your password"/>
                                 <button type="submit" className="btn-sign">Sign In</button>
@@ -62,8 +62,8 @@ class SignIn extends Component {
 const validate = values => {
     const errors = {};
 
-    if (!values.email) {
-        errors.email = 'Add your email!'
+    if (!values.username) {
+        errors.username = 'Add your username!'
     } else if (!values.password) {
         errors.password = 'Add your password!'
     }
