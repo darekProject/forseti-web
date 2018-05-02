@@ -41,7 +41,7 @@ const validate = values => {
     const errors = {};
     if (!values.number) {
         errors.number = 'Give the number'
-    } else if (values.number.trim().length === 16) {
+    } else if (values.number.trim().length !== 16) {
         errors.number = 'Account number should have 16 number!'
     } else if (values.number) {
         const regexEmail = /\d+/;

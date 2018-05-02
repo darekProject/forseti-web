@@ -1,18 +1,41 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
+import PropTypes from 'prop-types';
 
 import Search from "../../comonents/Search/Search";
 import NumberData from "../../comonents/NumberData/NumberData";
 
 class CheckNumber extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = this.getInitialState()
+    }
+
+    static propTypes = {
+        sendThumbs: PropTypes.func
+    };
+
+    static defaultProps = {
+        sendThumbs: () => {
+        }
+    };
+
+    getInitialState = () => {
+        return {
+            number: null
+        }
+    };
+
     handleFromSearch = ({number}) => {
         this.props.getThumbsByAccountNum({number});
+        this.setState({number});
     };
 
     handleSendThumbs = (value) => {
-        this.props.sendThumbs(value);
+        const number = this.state.number;
+        value === 1 ? this.props.sendThumbs(number, 'UP') : this.props.sendThumbs(number, 'DOWN')
     };
 
     render() {

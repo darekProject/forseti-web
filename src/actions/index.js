@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getToken, setToken, removeToken, setUserName} from '../utils/utlis';
+import {setToken, removeToken, setUserName, getToken} from '../utils/utlis';
 import {
     NUMBER_ERROR,
     NUMBER_OK,
@@ -16,21 +16,11 @@ const ROOT_URL = 'http://localhost:8080';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
     try {
-        // const data = await axios.post(`${ROOT_URL}/`, {number}); // we do not have api :/
-        const data = {
-            comments: [
-                {
-                    name: 'Jan Kowalski',
-                    content: 'Konto sprawdzone polecam na 100%'
-                },
-                {
-                    name: 'Maria Kowalski',
-                    content: 'Robilam przelewa dwa razy. Polecam tego numerowicza!!!'
-                }
-            ]
-        }
+        const data = await axios.get(`${ROOT_URL}/api/accountNumber/${number}`,); // we do not have api :/
 
-        dispatch({type: NUMBER_INFO, payload: data})
+        console.log(data);
+
+        // dispatch({type: NUMBER_INFO, payload: data})
     } catch (e) {
         dispatch({type: NUMBER_ERROR});
     }
@@ -39,10 +29,9 @@ export const getInfoAboutNumber = ({number}) => async dispatch => {
 export const getThumbsByAccountNum = ({number}) => async dispatch => {
     try {
 
-        // const data = await axios.post(`${ROOT_URL}/number`, {number}); // we do not have api :/
-        const data = {up: 100, down: 20};
+        const data = await axios.get(`${ROOT_URL}/api/accountNumber/${number}`);
 
-        dispatch({type: NUMBER_OK, payload: data});
+        dispatch({type: NUMBER_OK, payload: data.data});
     } catch (err) {
         dispatch({type: NUMBER_ERROR});
     }
@@ -73,7 +62,7 @@ export const signInUser = ({username, password}) => async dispatch => {
                 password
             });
 
-        setToken(userData.data.authorization);
+        setToken(userData.data.Authorization);
         setUserName(userData.data.username);
         dispatch({type: AUTH_USER, payload: userData.data});
 
@@ -95,25 +84,21 @@ export const authError = (error) => {
     }
 };
 
-export const sendThumbs = value => async dispatch => {
+export const sendThumbs = (number, value) => async dispatch => {
     try {
-        // const res = await axios.put(`${ROOT_URL}/thumbs`, {
-        //     value
-        // });
-
-        const res = {
-            data: {
-                status: 'OK',
-                data: {
-                    up: 101,
-                    down: 50
-                }
-            },
-        };
+        console.log(`${getToken()}`);
+        const res = await axios.put(`${ROOT_URL}/api/accountNumber/thumb/${number}`, {
+            thumb: value
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${getToken()}`
+            }
+        });
 
         dispatch({type: THUMBS_UPDATA, payload: res.data})
-
     } catch (e) {
-        dispatch({typ: THUMBS_ERROR});
+        dispatch({type: THUMBS_ERROR});
     }
 };

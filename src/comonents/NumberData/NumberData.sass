@@ -1,9 +1,27 @@
 @import "../../styles/_variables.sass"
 
-.error-number
+.flex-center
+  display: flex
+  justify-content: center
+
+.error-number,.succes-info
   font-family: $font-can
   font-size: 18px
-  color: $red
+  color: #ffffff
+  font-weight: 600
+  margin-top: 50px
+  width: 400px
+  height: 60px
+  background: rgba(255, 0, 0, 0.5)
+  border: 1px solid rgb(255, 0, 0)
+  border-radius: 8px
+  display: flex
+  align-items: center
+  justify-content: center
+
+.succes-info
+  background: rgba(52, 168, 83, 0.5)
+  border: 1px solid rgb(52, 168, 83)
 
 .data_box
   min-width: 400px

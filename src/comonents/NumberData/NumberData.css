@@ -1,9 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
-.error-number {
+.flex-center {
+  display: flex;
+  justify-content: center; }
+
+.error-number, .succes-info {
   font-family: "Cantarell", sans-serif;
   font-size: 18px;
-  color: #EA4335; }
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 50px;
+  width: 400px;
+  height: 60px;
+  background: rgba(255, 0, 0, 0.5);
+  border: 1px solid red;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.succes-info {
+  background: rgba(52, 168, 83, 0.5);
+  border: 1px solid #34a853; }
 
 .data_box {
   min-width: 400px;

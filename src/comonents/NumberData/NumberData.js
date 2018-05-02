@@ -6,7 +6,7 @@ class NumberData extends Component {
 
     renderMessageAfterSendThumbs() {
         if (this.props.thumbsSet === 'OK') {
-            return <span>Thumbs is added!!!</span>
+            return <span className="success-info">Thumbs is added!!!</span>
         }
 
         if (this.props.thumbsSetError) {
@@ -17,8 +17,8 @@ class NumberData extends Component {
     renderNumData = () => {
         if (this.props.numData) {
 
-            const thumbsUp = this.props.numData.up;
-            const thumbsDown = this.props.numData.down;
+            const thumbsUp = this.props.numData.thumbsUp;
+            const thumbsDown = this.props.numData.thumbsDown;
 
             return <div className="data_box">
                 <div onClick={() => this.props.setThumbs(1)}>
@@ -46,10 +46,10 @@ class NumberData extends Component {
                     <div className="col-lg-12">
                         {this.renderNumData()}
                     </div>
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 flex-center">
                         {this.renderError()}
                     </div>
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 flex-center">
                         {this.renderMessageAfterSendThumbs()}
                     </div>
                 </div>
