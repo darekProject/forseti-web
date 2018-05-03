@@ -5,6 +5,8 @@ import {createStore, applyMiddleware} from 'redux';
 import reduxThunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 import {Route, BrowserRouter} from 'react-router-dom';
+import {getToken} from "./utils/utlis";
+import {AUTH_USER} from "./actions/type";
 
 import './index.css';
 
@@ -16,9 +18,13 @@ import ViewInfo from "./containers/ViewInfo/ViewInfo";
 
 import reducers from './reducers';
 
-
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
+
+const token = getToken();
+if (token) {
+    store.dispatch({type: AUTH_USER});
+}
 
 ReactDOM.render(
     <Provider store={store}>
