@@ -20,7 +20,7 @@ export const getInfoAboutNumber = ({number}) => async dispatch => {
 
         console.log(data);
 
-        // dispatch({type: NUMBER_INFO, payload: data})
+        dispatch({type: NUMBER_INFO, payload: data})
     } catch (e) {
         dispatch({type: NUMBER_ERROR});
     }
@@ -87,17 +87,13 @@ export const authError = (error) => {
 export const sendThumbs = (number, value) => async dispatch => {
     try {
         console.log(`${getToken()}`);
-        const res = await axios.put(`${ROOT_URL}/api/accountNumber/thumb/${number}`, {
-            thumb: value
-        }, {
+        const res = await axios.put(`${ROOT_URL}/api/accountNumber/thumb/${number}?thumb=${value}`, {}, {
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 'Authorization': `${getToken()}`
             }
         });
 
-        dispatch({type: THUMBS_UPDATA, payload: res.data})
+        dispatch({type: THUMBS_UPDATA, payload: res})
     } catch (e) {
         dispatch({type: THUMBS_ERROR});
     }
