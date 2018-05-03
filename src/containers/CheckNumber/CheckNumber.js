@@ -14,11 +14,14 @@ class CheckNumber extends Component {
     }
 
     static propTypes = {
-        sendThumbs: PropTypes.func
+        sendThumbs: PropTypes.func,
+        getThumbsByAccountNum: PropTypes.func
     };
 
     static defaultProps = {
         sendThumbs: () => {
+        },
+        getThumbsByAccountNum: () => {
         }
     };
 

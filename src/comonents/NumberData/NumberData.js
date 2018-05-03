@@ -5,7 +5,7 @@ import './NumberData.css';
 class NumberData extends Component {
 
     renderMessageAfterSendThumbs() {
-        if (this.props.thumbsSet === 'OK') {
+        if (this.props.thumbsSet === 200) {
             return <span className="success-info">Thumbs is added!!!</span>
         }
 

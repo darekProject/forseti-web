@@ -86,7 +86,7 @@ export const authError = (error) => {
 
 export const sendThumbs = (number, value) => async dispatch => {
     try {
-        console.log(`${getToken()}`);
+
         const res = await axios.put(`${ROOT_URL}/api/accountNumber/thumb/${number}?thumb=${value}`, {}, {
             headers: {
                 'Authorization': `${getToken()}`
