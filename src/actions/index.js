@@ -40,7 +40,7 @@ export const getThumbsByAccountNum = ({number}) => async dispatch => {
 export const signUpUser = ({username, email, password}) => async dispatch => {
 
     try {
-        await axios.post(`${ROOT_URL}/api/signup/`, {
+        await axios.post(`${ROOT_URL}/signup/`, {
             username,
             email,
             password

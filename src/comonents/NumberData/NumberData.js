@@ -10,7 +10,7 @@ class NumberData extends Component {
         }
 
         if (this.props.thumbsSetError) {
-            return <span className="error-info">Error during add thumbs!!!</span>
+            return <span className="error-number">Error during add thumbs!!!</span>
         }
     }
 

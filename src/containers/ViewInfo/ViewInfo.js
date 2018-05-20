@@ -56,7 +56,7 @@ class ViewInfo extends Component {
                                address={this.state.address}
                                postal={this.state.postal}
                                phone={this.state.phone}/>
-                {/*<Comments comments={this.props.infoData.comments}/>*/}
+                <Comments comments={this.props.infoData.comments}/>
             </Fragment>
         }
     };
