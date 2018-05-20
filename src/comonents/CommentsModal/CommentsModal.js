@@ -1,36 +1,67 @@
-import React from 'react';
+import React, {Component, Fragment} from 'react';
+import {Field, reduxForm} from 'redux-form';
 import Modal from 'react-bootstrap4-modal';
+import * as actions from "../../actions";
+import {connect} from "react-redux";
 
-class Spacecraft extends React.Component {
-    // event handling methods go here
+import './CommentsModal.css'
 
-    constructor(props) {
-        super(props);
+class CommentsModal extends Component {
 
-        this.state = {
-            modalVisible: this.props.modalVisible
-        }
-    }
+    renderField = ({input, label, type, meta: {touched, error, warning}}) => (
+        <Fragment>
+            <input {...input} placeholder={label} type={type}/>
+            {touched && ((error && <span className="error-info">{error}</span>) || (warning &&
+                <span className="error-info">{warning}</span>))}
+        </Fragment>
+    );
 
-    modalBackdropClicked = () => {
-        this.setState({modalVisible: false});
-    };
+    renderFieldText = ({input, label, type, meta: {touched, error, warning}}) => (
+        <Fragment>
+            <textarea {...input} placeholder={label} type={type}></textarea>
+            {touched && ((error && <span className="error-data">{error}</span>) || (warning &&
+                <span className="error-data">{warning}</span>))}
+        </Fragment>
+    );
 
     render() {
+        const {handleSubmit} = this.props;
+
         return (
-            <Modal visible={this.state.modalVisible} onClickBackdrop={this.modalBackdropClicked}>
+            <Modal visible={this.props.modalVisible} onClickBackdrop={() => this.props.modalBackdropClicked()}>
                 <div className="modal-header">
-                    <h5 className="modal-title">Red Alert!</h5>
+                    <h5 className="modal-title">Add comments!</h5>
                 </div>
                 <div className="modal-body">
-                    <p>Enemy vessel approaching!</p>
+                    <div className="form">
+                        <form id="add-comment"
+                              onSubmit={handleSubmit((values) => this.props.handleSubmitAddComments(values))}>
+                            <div className="group-wrapper">
+                                <label>Account`s number:</label>
+                                <div>
+                                    <Field type="text"
+                                           name="number"
+                                           component={this.renderField}
+                                           value={this.props.accountNumber}
+                                           label="Account number..."/>
+                                </div>
+                            </div>
+                            <div className="group-wrapper">
+                                <label>Your comments: </label>
+                                <div>
+                                    <Field type="text"
+                                           name="comment"
+                                           component={this.renderFieldText}
+                                           label="Add your comment..."/>
+                                </div>
+                            </div>
+                            <button type="submit" className="btn btn-success">ADD</button>
+                        </form>
+                    </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" onClick={this.onPanic}>
-                        Panic
-                    </button>
-                    <button type="button" className="btn btn-primary" onClick={this.onFirePhasers}>
-                        Fire phasers
+                    <button type="button" className="btn btn-danger" onClick={() => this.props.switchModal()}>
+                        CANCEL
                     </button>
                 </div>
             </Modal>
@@ -38,4 +69,21 @@ class Spacecraft extends React.Component {
     }
 }
 
-export default Modal;
+const validate = values => {
+    const errors = {};
+    if (!values.number) {
+        errors.number = 'Give the number'
+    } else if (values.number.trim().length !== 16) {
+        errors.number = 'Account number should have 16 number!'
+    } else if (!values.message) {
+        errors.message = 'Give a message!';
+    }
+    return errors
+};
+
+const reduxFormAddComments = reduxForm({
+    form: 'search',
+    validate,
+})(CommentsModal);
+
+export default connect(null, actions)(reduxFormAddComments);

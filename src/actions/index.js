@@ -9,7 +9,7 @@ import {
     AUTH_ERROR,
     AUTH_USER,
     USER_ADDED,
-    UNAUTH_USER
+    UNAUTH_USER, OPEN_MODAL, ADD_COMMENTS, REMOVE_COMMENTS
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -96,5 +96,38 @@ export const sendThumbs = (number, value) => async dispatch => {
         dispatch({type: THUMBS_UPDATA, payload: res})
     } catch (e) {
         dispatch({type: THUMBS_ERROR});
+    }
+};
+
+export const openModal = () => dispatch => {
+    dispatch({type: OPEN_MODAL});
+};
+
+export const addComment = ({number, comment}) => async dispatch => {
+  try {
+      const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, {comment}, {
+          headers: {
+              'Authorization': `${getToken()}`
+          }
+      });
+        console.log(response);
+      dispatch({type: ADD_COMMENTS, payload: response});
+  }  catch (e) {
+      console.error(e);
+  }
+};
+
+export const removeComment = (id) => async dispatch => {
+    try {
+        const response = await axios.delete(`${ROOT_URL}/api/user/comment/${id}`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+
+        console.log(response);
+        dispatch({type: REMOVE_COMMENTS, payload: response});
+    }  catch (e) {
+        console.error(e);
     }
 };

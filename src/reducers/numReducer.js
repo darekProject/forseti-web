@@ -1,4 +1,12 @@
-import {NUMBER_ERROR, NUMBER_OK, THUMBS_ERROR, THUMBS_UPDATA, NUMBER_INFO} from "../actions/type";
+import {
+    NUMBER_ERROR,
+    NUMBER_OK,
+    THUMBS_ERROR,
+    THUMBS_UPDATA,
+    NUMBER_INFO,
+    ADD_COMMENTS,
+    REMOVE_COMMENTS
+} from "../actions/type";
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -27,6 +35,16 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 thumbsSetError: true
+            };
+        case ADD_COMMENTS:
+            return {
+                ...state,
+                comments: action.payload
+            };
+        case REMOVE_COMMENTS:
+            return {
+                ...state,
+                infoData: action.payload
             };
         default:
             return state;

@@ -9,3 +9,7 @@ export const AUTH_USER = 'auth_user';
 export const USER_ADDED = 'auth_added';
 export const AUTH_ERROR = 'auth_error';
 export const UNAUTH_USER = 'unauth_user';
+
+export const ADD_COMMENTS = 'add_comments';
+export const REMOVE_COMMENTS = 'remove_comments';
+export const OPEN_MODAL = 'open_modal';

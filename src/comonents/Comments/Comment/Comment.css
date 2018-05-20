@@ -5,12 +5,23 @@
   flex-direction: column;
   padding: 30px;
   box-shadow: 0 0 20px #eeeeee;
-  border-radius: 5px; }
+  border-radius: 5px;
+  position: relative; }
   .comment header {
-    display: flex; }
+    display: flex;
+    align-items: center; }
+    .comment header div {
+      display: flex;
+      flex-direction: column; }
     .comment header p {
-      font-family: "Orbitron", sans-serif;
-      font-size: 14px; }
+      font-family: "Cantarell", sans-serif;
+      font-size: 14px;
+      margin: 0; }
+    .comment header p:first-child {
+      color: #0D47A1; }
+    .comment header p.timestamp {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.75); }
     .comment header svg {
       font-size: 14px;
       margin-right: 15px; }
@@ -18,7 +29,16 @@
     margin-top: 10px; }
     .comment article p {
       font-family: "Cantarell", sans-serif;
-      font-size: 14px; }
+      font-size: 14px;
+      margin-top: 20px;
+      margin-left: 30px; }
+  .comment .remove-comment {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background: none;
+    border: none; }
 
 .comments {
   margin-top: 100px;

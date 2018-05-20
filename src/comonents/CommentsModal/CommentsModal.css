@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.modal-title {
+  font-family: "Cantarell", sans-serif;
+  font-size: 18px; }
+
+#add-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  #add-comment .group-wrapper + .group-wrapper {
+    margin-top: 30px; }
+  #add-comment .group-wrapper {
+    display: flex;
+    align-items: center;
+    font-family: "Cantarell", sans-serif;
+    font-size: 14px; }
+    #add-comment .group-wrapper .error-data {
+      position: absolute;
+      bottom: 20px;
+      left: 15px; }
+    #add-comment .group-wrapper label {
+      width: 100px; }
+    #add-comment .group-wrapper input, #add-comment .group-wrapper textarea {
+      width: 250px;
+      height: 40px;
+      border: 1px solid #e2e2e2;
+      padding-left: 10px;
+      border-radius: 2px;
+      font-family: "Cantarell", sans-serif; }
+    #add-comment .group-wrapper textarea {
+      height: 200px; }
+  #add-comment button {
+    margin-top: 40px;
+    font-family: "Cantarell", sans-serif;
+    cursor: pointer; }
+  #add-comment .group-wrapper:nth-child(2) {
+    align-items: flex-start; }
+
+.btn-danger {
+  font-family: "Cantarell", sans-serif; }

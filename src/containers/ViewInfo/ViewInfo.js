@@ -21,7 +21,8 @@ class ViewInfo extends Component {
             outpost: '',
             address: '',
             postal: '',
-            phone: ''
+            phone: '',
+            number: null
         }
     };
 
@@ -44,7 +45,8 @@ class ViewInfo extends Component {
             outpost,
             address,
             postal,
-            phone
+            phone,
+            number
         })
     };
 
@@ -56,7 +58,7 @@ class ViewInfo extends Component {
                                address={this.state.address}
                                postal={this.state.postal}
                                phone={this.state.phone}/>
-                <Comments comments={this.props.infoData.comments}/>
+                <Comments comments={this.props.infoData.data.comments} accountNumber={this.state.number}/>
             </Fragment>
         }
     };
