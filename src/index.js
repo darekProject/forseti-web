@@ -15,6 +15,7 @@ import SignIn from './comonents/SignIn/SignIn';
 import SignUp from './comonents/SignUp/SignUp';
 import CheckNumber from "./containers/CheckNumber/CheckNumber";
 import ViewInfo from "./containers/ViewInfo/ViewInfo";
+import Activities from "./comonents/Activities/Activities";
 
 import reducers from './reducers';
 
@@ -35,6 +36,7 @@ ReactDOM.render(
                 <Route path="/getinfo" component={ViewInfo}/>
                 <Route exact path="/SignIn" component={SignIn}/>
                 <Route exact path="/SignUp" component={SignUp}/>
+                <Route path="/getactivities" component={Activities}/>
             </Fragment>
         </BrowserRouter>
     </Provider>,

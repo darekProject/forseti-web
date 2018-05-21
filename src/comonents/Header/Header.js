@@ -36,6 +36,9 @@ class Header extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/getinfo">Get Info</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/getactivities">Activities</a>
+                            </li>
                         </ul>
                         <div className="navbar-collapse collapse">
                             <ul className="nav navbar-nav ml-auto">
