@@ -13,3 +13,5 @@ export const UNAUTH_USER = 'unauth_user';
 export const ADD_COMMENTS = 'add_comments';
 export const REMOVE_COMMENTS = 'remove_comments';
 export const OPEN_MODAL = 'open_modal';
+
+export const GET_ACCTIVITIES = 'get_acctivities';

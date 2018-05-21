@@ -9,7 +9,8 @@ import {
     AUTH_ERROR,
     AUTH_USER,
     USER_ADDED,
-    UNAUTH_USER, OPEN_MODAL, ADD_COMMENTS, REMOVE_COMMENTS
+    UNAUTH_USER,
+    OPEN_MODAL, ADD_COMMENTS, GET_ACCTIVITIES
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -104,17 +105,17 @@ export const openModal = () => dispatch => {
 };
 
 export const addComment = ({number, comment}) => async dispatch => {
-  try {
-      const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, `${comment}`, {
-          headers: {
-              'Authorization': `${getToken()}`,
-              "Content-Type": "text/plain; charset=utf-8"
-          }
-      });
-      dispatch({type: ADD_COMMENTS, payload: response});
-  }  catch (e) {
-      console.error(e);
-  }
+    try {
+        const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, `${comment}`, {
+            headers: {
+                'Authorization': `${getToken()}`,
+                "Content-Type": "text/plain; charset=utf-8"
+            }
+        });
+        dispatch({type: ADD_COMMENTS, payload: response});
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 export const removeComment = (id) => async dispatch => {
@@ -124,7 +125,21 @@ export const removeComment = (id) => async dispatch => {
                 'Authorization': `${getToken()}`
             }
         });
-    }  catch (e) {
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+export const getActivities = (userId) => async dispatch => {
+    try {
+        const response = await axios.get(`${ROOT_URL}/`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+
+        dispatch({type: GET_ACCTIVITIES, payload: response});
+    } catch (e) {
         console.error(e);
     }
 };
