@@ -1,9 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
-button.add-comments {
-  width: 250px;
-  height: 40px;
+.comments-title {
+  font-family: "Cantarell", sans-serif;
+  font-size: 24px;
+  text-align: center; }
+
+.add-comments {
+  display: flex;
+  justify-content: flex-end; }
+
+.no-comments {
+  text-align: center; }
+  .no-comments span {
+    font-family: "Cantarell", sans-serif;
+    font-size: 22px;
+    color: #0D47A1; }
+
+button.add-comments-btn {
+  width: 50px;
+  height: 50px;
   border: none;
+  border-radius: 100%;
   background: #64B5F6;
   color: #ffffff;
   font-family: "Cantarell", sans-serif;
@@ -11,7 +28,12 @@ button.add-comments {
   font-weight: 700;
   cursor: pointer;
   transition: all .5s ease;
-  border-radius: 3px; }
-  button.add-comments:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  button.add-comments-btn svg {
+    font-size: 22px;
+    color: #ffffff; }
+  button.add-comments-btn:hover {
     background: #0D47A1;
     border-radius: 5px; }

@@ -105,12 +105,12 @@ export const openModal = () => dispatch => {
 
 export const addComment = ({number, comment}) => async dispatch => {
   try {
-      const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, {comment}, {
+      const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, `${comment}`, {
           headers: {
-              'Authorization': `${getToken()}`
+              'Authorization': `${getToken()}`,
+              "Content-Type": "text/plain; charset=utf-8"
           }
       });
-        console.log(response);
       dispatch({type: ADD_COMMENTS, payload: response});
   }  catch (e) {
       console.error(e);
@@ -119,14 +119,11 @@ export const addComment = ({number, comment}) => async dispatch => {
 
 export const removeComment = (id) => async dispatch => {
     try {
-        const response = await axios.delete(`${ROOT_URL}/api/user/comment/${id}`, {
+        await axios.delete(`${ROOT_URL}/api/user/comment/${id}`, {
             headers: {
                 'Authorization': `${getToken()}`
             }
         });
-
-        console.log(response);
-        dispatch({type: REMOVE_COMMENTS, payload: response});
     }  catch (e) {
         console.error(e);
     }

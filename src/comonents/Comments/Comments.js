@@ -12,7 +12,9 @@ class Comments extends Component {
         super(props);
 
         this.state = {
-            modalVisible: false
+            modalVisible: false,
+            rightComment: null,
+            comments: null
         }
     }
 
@@ -20,8 +22,8 @@ class Comments extends Component {
         this.setState({modalVisible: false});
     };
 
-    renderComments = () => {
-        const {comments} = this.props;
+    mapComments = (newComments) => {
+        const comments = newComments;
         const commentsArray = [];
         Object.entries(comments).map(keyValue => {
             commentsArray.push({user: keyValue[0], comments: keyValue[1]});
@@ -33,26 +35,61 @@ class Comments extends Component {
             el.comments.map(comment => allComments.push({user: el.user, comment}))
         }
 
-        return allComments.map(({user, comment}) => {
-            const props = {
+        const rightComments = allComments.map(({user, comment}) => {
+            return {
                 userName: user,
                 comment: comment.comment,
                 id: comment.id,
                 timestamp: new Date(comment.timeStamp).toLocaleString(),
                 removeComment: (id) => this.handleRemoveComment(id)
             };
+        });
 
-            return <Comment {...props}/>
-        })
+        this.setState({comments: rightComments});
     };
 
     handleSubmitAddComments = values => {
         this.props.addComment(values);
+        this.switchModal();
     };
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.comments) {
+            this.mapComments(nextProps.comments);
+        }
+    }
 
     handleRemoveComment = (id) => {
         this.props.removeComment(id);
+
+        const {comments} = this.state;
+        const commentsIndex = comments.findIndex(com => com.id === id);
+        comments.splice(commentsIndex, 1);
+
+        this.setState({comments});
     };
+
+    componentDidMount() {
+        const {comments} = this.props;
+        this.mapComments(comments);
+    }
+
+    renderComments = () => {
+        const {comments} = this.state;
+
+        if (comments && comments.length > 0) {
+            return comments.map(comment => <Comment {...comment}/>)
+        } else {
+            return (
+                <div className="row">
+                    <div className="col-lg-12 no-comments">
+                        <span>No comments!</span>
+                    </div>
+                </div>
+            )
+        }
+    };
+
 
     renderModal = () => {
         return <CommentsModal modalVisible={this.state.modalVisible}
@@ -69,17 +106,26 @@ class Comments extends Component {
 
     render() {
         return <div className="container comments">
+            <div className="row">
+                <div className="col-lg-12 comments-title">
+                    <h1>Comments</h1>
+                </div>
+            </div>
             <Fragment>
                 {this.renderComments()}
             </Fragment>
             <div className="row">
-                <div className="col-lg-12">
-                    <button onClick={() => this.switchModal()} className="add-comments">Add your comment!!</button>
+                <div className="col-lg-12 add-comments">
+                    <button onClick={() => this.switchModal()} className="add-comments-btn"><i className="fas fa-pencil-alt"></i></button>
                 </div>
             </div>
             {this.renderModal()}
         </div>
     }
 }
+
+Comments.defaultTypes = {
+    comments: null
+};
 
 export default connect(null, actions)(Comments);

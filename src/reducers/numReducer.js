@@ -39,7 +39,7 @@ export default function (state = {}, action) {
         case ADD_COMMENTS:
             return {
                 ...state,
-                comments: action.payload
+                infoData: action.payload
             };
         case REMOVE_COMMENTS:
             return {
