@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.error-auth {
+  position: absolute;
+  bottom: 90px;
+  font-family: "Cantarell", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: #EA4335;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 600; }
+
 .input-box {
   display: flex;
   flex-direction: column; }

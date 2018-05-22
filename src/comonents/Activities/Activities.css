@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.activities-title {
+  text-align: center;
+  margin: 50px 0;
+  font-family: "Cantarell", sans-serif;
+  font-weight: 900; }
+
+.activities .row + .row {
+  margin-top: 30px; }

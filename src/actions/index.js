@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setToken, removeToken, setUserName, getToken} from '../utils/utlis';
+import {setToken, removeToken, setUserName, getToken, removeUserName} from '../utils/utlis';
 import {
     NUMBER_ERROR,
     NUMBER_OK,
@@ -69,12 +69,13 @@ export const signInUser = ({username, password}) => async dispatch => {
 
     } catch (e) {
         console.log(e);
-        return dispatch(authError('Error in login'));
+        return dispatch(authError('Username or password is incorrect!'));
     }
 };
 
 export const signOutUser = () => {
     removeToken();
+    removeUserName();
     return {type: UNAUTH_USER};
 };
 
@@ -137,8 +138,6 @@ export const getActivities = () => async dispatch => {
                 'Authorization': `${getToken()}`
             }
         });
-
-        console.log(response);
 
         dispatch({type: GET_ACTIVITIES, payload: response});
     } catch (e) {

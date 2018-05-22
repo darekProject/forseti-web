@@ -27,6 +27,12 @@ class SignIn extends Component {
         this.props.signInUser({username, password});
     };
 
+    renderError = () => {
+        if (this.props.errorMessage) {
+            return <span className='error-auth'>{this.props.errorMessage}</span>
+        }
+    };
+
     render() {
         const {handleSubmit} = this.props;
 
@@ -50,6 +56,7 @@ class SignIn extends Component {
                                        label="Add your password"/>
                                 <button type="submit" className="btn-sign">Sign In</button>
                             </form>
+                            {this.renderError()}
                         </div>
                     </div>
                 </div>

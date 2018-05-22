@@ -11,3 +11,5 @@ export const getUserName = () => localStorage.getItem(USER_NAME);
 
 export const removeToken = () => localStorage.removeItem(TOKEN);
 
+export const removeUserName = () => localStorage.removeItem(USER_NAME);
+

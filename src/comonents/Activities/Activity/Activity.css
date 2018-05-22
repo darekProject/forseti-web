@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.activity {
+  text-align: center; }
+  .activity p {
+    font-family: "Cantarell", sans-serif;
+    font-size: 14px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .activity p img {
+      max-height: 25px;
+      margin-right: 15px; }
+    .activity p span {
+      font-weight: 900;
+      margin: 0 5px; }
+  .activity span {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: "Cantarell", sans-serif;
+    font-size: 12px; }
