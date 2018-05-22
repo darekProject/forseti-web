@@ -10,7 +10,7 @@ import {
     AUTH_USER,
     USER_ADDED,
     UNAUTH_USER,
-    OPEN_MODAL, ADD_COMMENTS, GET_ACCTIVITIES
+    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -130,15 +130,17 @@ export const removeComment = (id) => async dispatch => {
     }
 };
 
-export const getActivities = (userId) => async dispatch => {
+export const getActivities = () => async dispatch => {
     try {
-        const response = await axios.get(`${ROOT_URL}/`, {
+        const response = await axios.get(`${ROOT_URL}/api/user/`, {
             headers: {
                 'Authorization': `${getToken()}`
             }
         });
 
-        dispatch({type: GET_ACCTIVITIES, payload: response});
+        console.log(response);
+
+        dispatch({type: GET_ACTIVITIES, payload: response});
     } catch (e) {
         console.error(e);
     }
