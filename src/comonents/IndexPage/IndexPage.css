@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+.main-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px; }
+  .main-wrapper .app-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 34px;
+    color: #0D47A1; }
+  .main-wrapper .sub-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 24px;
+    font-weight: 600; }

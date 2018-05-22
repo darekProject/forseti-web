@@ -5,6 +5,7 @@ import Comment from "./Comment/Comment";
 import CommentsModal from '../CommentsModal/CommentsModal';
 
 import './Comments.css'
+import {getToken, getUserName} from "../../utils/utlis";
 
 class Comments extends Component {
 
@@ -116,7 +117,7 @@ class Comments extends Component {
             </Fragment>
             <div className="row">
                 <div className="col-lg-12 add-comments">
-                    <button onClick={() => this.switchModal()} className="add-comments-btn"><i className="fas fa-pencil-alt"></i></button>
+                    {getToken() ? <button onClick={() => this.switchModal()} className="add-comments-btn"><i className="fas fa-pencil-alt"></i></button> : null}
                 </div>
             </div>
             {this.renderModal()}

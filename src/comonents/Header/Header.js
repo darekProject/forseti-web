@@ -4,18 +4,42 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions';
 
 import './Header.css';
+import {getToken, getUserName} from "../../utils/utlis";
 
 class Header extends Component {
 
-    renderLinks = () => {
-        if (this.props.authenticated) {
-            return <Link className="nav-link" onClick={() => this.props.signOutUser()} to="/">Sign out</Link>
+    renderUserBox = () => {
+        const userName = getUserName();
+        let userString = '';
+        let dropdownLink = '';
+
+        if (userName) {
+            userString = <Fragment>
+                <div className="username">{userName}</div>
+            </Fragment>;
         } else {
-            return <Fragment>
+            userString = <Fragment><img src="images/sign.png" alt=""/></Fragment>;
+        }
+
+        if (this.props.authenticated) {
+            dropdownLink = <Link className="nav-link" onClick={() => this.props.signOutUser()} to="/">Sign out</Link>
+        } else {
+            dropdownLink = <Fragment>
                 <Link className="nav-link" to="/signin">Sign in</Link>
                 <Link className="nav-link" to="/signup">Sign up</Link>
             </Fragment>
         }
+
+        return (<Fragment>
+                <a className="nav-link dropdown-toggle user" href="" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {userString}
+                </a>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {dropdownLink}
+                </div>
+            </Fragment>
+        )
     };
 
     render() {
@@ -37,19 +61,13 @@ class Header extends Component {
                                 <a className="nav-link" href="/getinfo">Get Info</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/getactivities">Activities</a>
+                                {getToken() ? <a className="nav-link" href="/getactivities">Activities</a> : null}
                             </li>
                         </ul>
                         <div className="navbar-collapse collapse">
                             <ul className="nav navbar-nav ml-auto">
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i className="fas fa-user"></i>
-                                    </a>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {this.renderLinks()}
-                                    </div>
+                                    {this.renderUserBox()}
                                 </li>
                             </ul>
                         </div>

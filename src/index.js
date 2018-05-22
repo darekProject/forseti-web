@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reduxThunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
-import {Route, BrowserRouter} from 'react-router-dom';
+import {Route, BrowserRouter,} from 'react-router-dom';
 import {getToken} from "./utils/utlis";
 import {AUTH_USER} from "./actions/type";
 
@@ -16,6 +16,8 @@ import SignUp from './comonents/SignUp/SignUp';
 import CheckNumber from "./containers/CheckNumber/CheckNumber";
 import ViewInfo from "./containers/ViewInfo/ViewInfo";
 import Activities from "./comonents/Activities/Activities";
+import IndexPage from "./comonents/IndexPage/IndexPage";
+import Redirect from "./comonents/AuthHoC/AuthHoC";
 
 import reducers from './reducers';
 
@@ -32,11 +34,12 @@ ReactDOM.render(
         <BrowserRouter>
             <Fragment>
                 <Route path="/" component={App}/>
+                <Route path="/" exact component={IndexPage}/>
                 <Route path="/CheckNumber" component={CheckNumber}/>
                 <Route path="/getinfo" component={ViewInfo}/>
                 <Route exact path="/SignIn" component={SignIn}/>
                 <Route exact path="/SignUp" component={SignUp}/>
-                <Route path="/getactivities" component={Activities}/>
+                <Route path="/getactivities" component={Redirect(Activities)}/>
             </Fragment>
         </BrowserRouter>
     </Provider>,
