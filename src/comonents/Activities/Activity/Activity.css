@@ -1,9 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
 .activity {
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transition: all .5s; }
+  .activity:hover {
+    box-shadow: 0 0 13px #e2e2e2; }
   .activity p {
-    font-family: "Cantarell", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 14px;
     margin: 0;
     display: flex;
@@ -14,8 +22,12 @@
       margin-right: 15px; }
     .activity p span {
       font-weight: 900;
-      margin: 0 5px; }
+      margin: 0 5px;
+      font-size: 12px; }
   .activity span {
     color: rgba(0, 0, 0, 0.7);
-    font-family: "Cantarell", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 12px; }
+
+.rotate-180 {
+  transform: rotate(180deg); }

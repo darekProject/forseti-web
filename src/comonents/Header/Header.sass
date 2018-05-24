@@ -12,12 +12,16 @@
   display: block
 
 .navbar
-  min-height: 100px
+  min-height: 80px
   display: flex
   justify-content: center
   align-items: center
-  & > .container
-    border-bottom: 3px solid $blue-medium
+  border-bottom: 1px solid #e2e2e2
+  box-shadow: 0 0 15px #e2e2e2
+  background: #ffffff
+
+.navbar-nav.menu
+  margin-left: 100px
 
 .navbar-brand
   color: $blue-black
@@ -32,19 +36,38 @@
   min-width: 170px
   font-family: $font-can
   font-weight: 600
+  display: flex
+  align-items: center
   .nav-link
+    color: #000000
+    font-weight: 400
     i
       color: $blue-medium
       &:hover
         color: $blue-medium
 
 .dropdown-menu
-  border: none
   border-radius: 0
-  background: $blue-medium
+  border: 1px solid #e2e2e2
+  top: 70px
+  padding-left: 10px
+  box-shadow: 0 0 15px #e2e2e2
+  .arrow-user
+    display: block
+    width: 20px
+    height: 20px
+    position: absolute
+    background: #ffffff
+    top: -10px
+    left: 20px
+    transform: rotate(45deg)
+    border-left: 1px solid #e2e2e2
+    border-top: 1px solid #e2e2e2
   .nav-link
-    color: #ffffff
+    color: #000000
     font-family: $font-can
     font-size: 18px
+    font-weight: 400
     &:hover
       font-weight: 600
+      border-radius: 3px

@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
 .modal-title {
-  font-family: "Cantarell", sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 18px; }
 
 #add-comment {
@@ -14,7 +15,7 @@
   #add-comment .group-wrapper {
     display: flex;
     align-items: center;
-    font-family: "Cantarell", sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 14px; }
     #add-comment .group-wrapper .error-data {
       position: absolute;
@@ -28,15 +29,15 @@
       border: 1px solid #e2e2e2;
       padding-left: 10px;
       border-radius: 2px;
-      font-family: "Cantarell", sans-serif; }
+      font-family: "Lato", sans-serif; }
     #add-comment .group-wrapper textarea {
       height: 200px; }
   #add-comment button {
     margin-top: 40px;
-    font-family: "Cantarell", sans-serif;
+    font-family: "Lato", sans-serif;
     cursor: pointer; }
   #add-comment .group-wrapper:nth-child(2) {
     align-items: flex-start; }
 
 .btn-danger {
-  font-family: "Cantarell", sans-serif; }
+  font-family: "Lato", sans-serif; }

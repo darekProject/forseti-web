@@ -15,7 +15,7 @@ class Comment extends Component {
         if (userName === this.props.userName) {
             return <button className="remove-comment"
                            onClick={() => removeComment(id)}>
-                <i className="fas fa-trash-alt"></i>
+                <img src="images/trash.png" alt=""/>
             </button>
         }
     };
@@ -25,7 +25,7 @@ class Comment extends Component {
             <div className="col-lg-12">
                 <div className="comment">
                     <header>
-                        <i className="fas fa-user"></i>
+                        <img src="images/user-icon.png" alt=""/>
                         <div>
                             <p>{this.props.userName}</p>
                             <p className="timestamp">{this.props.timestamp}</p>

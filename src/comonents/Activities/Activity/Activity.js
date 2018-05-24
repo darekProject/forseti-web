@@ -9,7 +9,7 @@ const getImgPerActivity = (type) => {
         case 'thumb up':
             return <img src="images/thumb-up.png" alt=""/>;
         case 'thumb down':
-            return <img src="images/thumb-up.png" alt=""/>;
+            return <img className="rotate-180" src="images/thumb-up.png" alt=""/>;
     }
 };
 

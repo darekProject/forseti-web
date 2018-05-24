@@ -1,11 +1,27 @@
 @import "../../styles/_variables.sass"
 
+.activities-wrapper
+  min-height: calc(100vh - 83px)
+  padding-top: 50px
+  .row
+    background: #ffffff
+    border-radius: 6px
+  & > .row:first-child
+    height: 100px
+    display: flex
+    align-items: center
+  .row + .row
+    margin-top: 30px
+
 .activities-title
   text-align: center
-  margin: 50px 0
   font-family: $font-can
   font-weight: 900
+  margin: 0
 
 .activities
+  padding: 40px 15px
+  .row
+    min-height: 70px
   .row + .row
     margin-top: 30px

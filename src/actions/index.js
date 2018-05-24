@@ -49,7 +49,7 @@ export const signUpUser = ({username, email, password}) => async dispatch => {
 
         dispatch({type: USER_ADDED});
     } catch (e) {
-        return dispatch(authError('Error in create account'));
+        return dispatch(authError('Username already exists in the database'));
     }
 
 };

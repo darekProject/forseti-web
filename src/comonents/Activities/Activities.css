@@ -1,10 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
+.activities-wrapper {
+  min-height: calc(100vh - 83px);
+  padding-top: 50px; }
+  .activities-wrapper .row {
+    background: #ffffff;
+    border-radius: 6px; }
+  .activities-wrapper > .row:first-child {
+    height: 100px;
+    display: flex;
+    align-items: center; }
+  .activities-wrapper .row + .row {
+    margin-top: 30px; }
+
 .activities-title {
   text-align: center;
-  margin: 50px 0;
-  font-family: "Cantarell", sans-serif;
-  font-weight: 900; }
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  margin: 0; }
 
-.activities .row + .row {
-  margin-top: 30px; }
+.activities {
+  padding: 40px 15px; }
+  .activities .row {
+    min-height: 70px; }
+  .activities .row + .row {
+    margin-top: 30px; }

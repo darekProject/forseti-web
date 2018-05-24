@@ -7,3 +7,7 @@ body {
 *:focus {
     outline: none !important;
 }
+
+#root {
+    background: #eeeeee;
+}
