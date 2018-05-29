@@ -1,13 +1,23 @@
 @import "../../styles/_variables.sass"
 
+.comments-box
+  padding: 20px 0
+
 .comments-title
   font-family: $font-can
   font-size: 24px
   text-align: center
+  background: #ffffff
+  border-radius: 5px
+  padding: 10px 0
+  h1
+    font-family: $font-can
+    font-size: 30px
 
 .add-comments
   display: flex
   justify-content: flex-end
+  margin-bottom: 10px
 
 .no-comments
   text-align: center
@@ -16,12 +26,15 @@
     font-size: 22px
     color: $blue-black
 
+.right-box
+  margin-top: 100px
+
 button.add-comments-btn
   width: 50px
   height: 50px
   border: none
-  border-radius: 100%
-  background: $blue-medium
+  border-radius: 5px
+  background: #000000
   color: #ffffff
   font-family: $font-can
   font-size: 16px
@@ -36,4 +49,3 @@ button.add-comments-btn
     color: #ffffff
   &:hover
     background: $blue-black
-    border-radius: 5px

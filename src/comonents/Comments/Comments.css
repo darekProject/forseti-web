@@ -1,14 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
+.comments-box {
+  padding: 20px 0; }
+
 .comments-title {
   font-family: "Lato", sans-serif;
   font-size: 24px;
-  text-align: center; }
+  text-align: center;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px 0; }
+  .comments-title h1 {
+    font-family: "Lato", sans-serif;
+    font-size: 30px; }
 
 .add-comments {
   display: flex;
-  justify-content: flex-end; }
+  justify-content: flex-end;
+  margin-bottom: 10px; }
 
 .no-comments {
   text-align: center; }
@@ -17,12 +27,15 @@
     font-size: 22px;
     color: #0D47A1; }
 
+.right-box {
+  margin-top: 100px; }
+
 button.add-comments-btn {
   width: 50px;
   height: 50px;
   border: none;
-  border-radius: 100%;
-  background: #64B5F6;
+  border-radius: 5px;
+  background: #000000;
   color: #ffffff;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -36,5 +49,4 @@ button.add-comments-btn {
     font-size: 22px;
     color: #ffffff; }
   button.add-comments-btn:hover {
-    background: #0D47A1;
-    border-radius: 5px; }
+    background: #0D47A1; }

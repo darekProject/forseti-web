@@ -27,13 +27,8 @@ class CheckNumber extends Component {
 
     getInitialState = () => {
         return {
-            number: null
+            number: this.props.number
         }
-    };
-
-    handleFromSearch = ({number}) => {
-        this.props.getThumbsByAccountNum({number});
-        this.setState({number});
     };
 
     handleSendThumbs = (value) => {
@@ -58,15 +53,7 @@ class CheckNumber extends Component {
             setThumbs: (values) => this.handleSendThumbs(values)
         };
 
-        const searchProps = {
-            title: 'Check account number',
-            handleSearch: ({number}) => this.handleFromSearch({number})
-        };
-
-        return <Fragment>
-            <Search  {...searchProps}/>
-            <NumberData {...propsNumberData}/>
-        </Fragment>
+        return <NumberData {...propsNumberData}/>
     }
 }
 

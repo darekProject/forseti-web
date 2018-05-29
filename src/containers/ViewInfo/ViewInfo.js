@@ -8,6 +8,9 @@ import Search from "../../comonents/Search/Search";
 import InfoPerNumber from "../../comonents/InfoPerNumber/InfoPerNumber";
 import Comments from "../../comonents/Comments/Comments";
 
+import './ViewInfo.css';
+import CheckNumber from "../CheckNumber/CheckNumber";
+
 class ViewInfo extends Component {
 
     constructor(props) {
@@ -52,24 +55,47 @@ class ViewInfo extends Component {
 
     renderData = () => {
         if (this.props.infoData) {
-            return <Fragment>
-                <InfoPerNumber bankName={this.state.bankName}
-                               outpost={this.state.outpost}
-                               address={this.state.address}
-                               postal={this.state.postal}
-                               phone={this.state.phone}/>
-                <Comments comments={this.props.infoData.data.comments} accountNumber={this.state.number}/>
-            </Fragment>
+            return <div className="col-lg-12">
+                <div className="row">
+                    <div className="col-lg-7">
+                        <Comments comments={this.props.infoData.data.comments} accountNumber={this.state.number}/>
+                    </div>
+                    <div className="col-lg right-box">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <InfoPerNumber bankName={this.state.bankName}
+                                               outpost={this.state.outpost}
+                                               address={this.state.address}
+                                               postal={this.state.postal}
+                                               phone={this.state.phone}/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <CheckNumber number={this.state.number}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     };
 
     render() {
-        const title = 'Get information about account number';
+        const title = 'Check number';
 
-        return <Fragment>
-            <Search title={title} handleSearch={({number}) => this.handleFromSearch({number})}/>
-            {this.renderData()}
-        </Fragment>
+        return <div className="container-fluid check-number">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <Search title={title} handleSearch={({number}) => this.handleFromSearch({number})}/>
+                    </div>
+                </div>
+                <div className="row">
+                    {this.renderData()}
+                </div>
+            </div>
+        </div>
     }
 }
 

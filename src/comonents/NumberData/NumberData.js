@@ -41,17 +41,11 @@ class NumberData extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        {this.renderNumData()}
-                    </div>
-                    <div className="col-lg-12 flex-center">
-                        {this.renderError()}
-                    </div>
-                    <div className="col-lg-12 flex-center">
-                        {this.renderMessageAfterSendThumbs()}
-                    </div>
+            <div className="row thumbs-box">
+                <div className="col-lg-12 ">
+                    {this.renderNumData()}
+                    {this.renderError()}
+                    {this.renderMessageAfterSendThumbs()}
                 </div>
             </div>
         )

@@ -23,7 +23,8 @@ export default function (state = {}, action) {
         case NUMBER_INFO:
             return {
                 ...state,
-                infoData: action.payload
+                infoData: action.payload,
+                data: action.payload.data
             };
         case THUMBS_UPDATA:
             return {

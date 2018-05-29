@@ -44,3 +44,14 @@
     .data_box div:last-child svg {
       position: relative;
       top: 23px; }
+
+.thumbs-box {
+  padding: 0 15px;
+  margin-top: 30px; }
+  .thumbs-box .col-lg-12 {
+    padding: 30px 0;
+    background: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; }

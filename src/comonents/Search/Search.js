@@ -27,8 +27,8 @@ class Search extends Component {
                             <Field type="text"
                                    name="number"
                                    component={renderField}
-                                   placeholder="Account number"/>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                                   label="Account number"/>
+                            <button type="submit" className="btn btn-primary"><i className="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>

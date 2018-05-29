@@ -106,21 +106,24 @@ class Comments extends Component {
     };
 
     render() {
-        return <div className="container comments">
-            <div className="row">
-                <div className="col-lg-12 comments-title">
-                    <h1>Comments</h1>
+        return <div className="row">
+            <div className="col-lg-12 comments">
+                <div className="row">
+                    <div className="col-lg-12 comments-title">
+                        <h1>Comments: </h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-12 comments-box">
+                        {this.renderComments()}
+                    </div>
+                    <div className="col-lg-12 add-comments">
+                        {getToken() ? <button onClick={() => this.switchModal()} className="add-comments-btn">
+                            <i className="fas fa-pencil-alt"></i></button> : null}
+                    </div>
+                    {this.renderModal()}
                 </div>
             </div>
-            <Fragment>
-                {this.renderComments()}
-            </Fragment>
-            <div className="row">
-                <div className="col-lg-12 add-comments">
-                    {getToken() ? <button onClick={() => this.switchModal()} className="add-comments-btn"><i className="fas fa-pencil-alt"></i></button> : null}
-                </div>
-            </div>
-            {this.renderModal()}
         </div>
     }
 }
