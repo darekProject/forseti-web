@@ -1,9 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import PropTypes from 'prop-types';
 
-import Search from "../../comonents/Search/Search";
 import NumberData from "../../comonents/NumberData/NumberData";
 
 class CheckNumber extends Component {
@@ -30,6 +29,12 @@ class CheckNumber extends Component {
             number: this.props.number
         }
     };
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.number) {
+            this.setState({number: this.props.number});
+        }
+    }
 
     handleSendThumbs = (value) => {
         const number = this.state.number;

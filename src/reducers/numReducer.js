@@ -10,11 +10,6 @@ import {
 
 export default function (state = {}, action) {
     switch (action.type) {
-        case NUMBER_OK:
-            return {
-                ...state,
-                data: action.payload
-            };
         case NUMBER_ERROR:
             return {
                 ...state,
@@ -30,7 +25,8 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 thumbsSet: action.payload.status,
-                data: action.payload.data
+                data: action.payload.data,
+                infoData: action.payload
             };
         case THUMBS_ERROR:
             return {

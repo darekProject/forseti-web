@@ -2,7 +2,6 @@ import axios from 'axios';
 import {setToken, removeToken, setUserName, getToken, removeUserName} from '../utils/utlis';
 import {
     NUMBER_ERROR,
-    NUMBER_OK,
     NUMBER_INFO,
     THUMBS_UPDATA,
     THUMBS_ERROR,
@@ -17,23 +16,17 @@ const ROOT_URL = 'http://localhost:8080';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
     try {
-        const data = await axios.get(`${ROOT_URL}/api/accountNumber/${number}`,); // we do not have api :/
+        const data = await axios.get(`${ROOT_URL}/api/accountNumber/${number}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }); // we do not have api :/
 
         console.log(data);
 
         dispatch({type: NUMBER_INFO, payload: data})
     } catch (e) {
-        dispatch({type: NUMBER_ERROR});
-    }
-}
-
-export const getThumbsByAccountNum = ({number}) => async dispatch => {
-    try {
-
-        const data = await axios.get(`${ROOT_URL}/api/accountNumber/${number}`);
-
-        dispatch({type: NUMBER_OK, payload: data.data});
-    } catch (err) {
         dispatch({type: NUMBER_ERROR});
     }
 };

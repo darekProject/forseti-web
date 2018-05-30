@@ -7,6 +7,7 @@ import {getDataPerNumber} from '../../utils/numberData';
 import Search from "../../comonents/Search/Search";
 import InfoPerNumber from "../../comonents/InfoPerNumber/InfoPerNumber";
 import Comments from "../../comonents/Comments/Comments";
+import {withRouter} from 'react-router-dom';
 
 import './ViewInfo.css';
 import CheckNumber from "../CheckNumber/CheckNumber";
@@ -50,7 +51,7 @@ class ViewInfo extends Component {
             postal,
             phone,
             number
-        })
+        });
     };
 
     renderData = () => {
@@ -105,4 +106,4 @@ const mapStateToProps = store => {
     }
 };
 
-export default connect(mapStateToProps, actions)(ViewInfo);
+export default withRouter(connect(mapStateToProps, actions)(ViewInfo));
