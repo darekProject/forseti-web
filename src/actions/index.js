@@ -98,7 +98,7 @@ export const openModal = () => dispatch => {
     dispatch({type: OPEN_MODAL});
 };
 
-export const addComment = ({number, comment}) => async dispatch => {
+export const addComment = (number, comment) => async dispatch => {
     try {
         const response = await axios.put(`${ROOT_URL}/api/accountNumber/comment/${number}`, `${comment}`, {
             headers: {

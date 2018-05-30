@@ -15,7 +15,8 @@ class Comments extends Component {
         this.state = {
             modalVisible: false,
             rightComment: null,
-            comments: null
+            comments: null,
+            number: props.accountNumber
         }
     }
 
@@ -41,16 +42,17 @@ class Comments extends Component {
                 userName: user,
                 comment: comment.comment,
                 id: comment.id,
-                timestamp: new Date(comment.timeStamp).toLocaleString(),
+                timestamp: comment.timeStamp,
                 removeComment: (id) => this.handleRemoveComment(id)
             };
         });
 
+        rightComments.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         this.setState({comments: rightComments});
     };
 
-    handleSubmitAddComments = values => {
-        this.props.addComment(values);
+    handleSubmitAddComments = ({comment}) => {
+        this.props.addComment(this.state.number, comment);
         this.switchModal();
     };
 
@@ -60,7 +62,7 @@ class Comments extends Component {
         }
     }
 
-    handleRemoveComment = (id) => {
+    handleRemoveComment = id => {
         this.props.removeComment(id);
 
         const {comments} = this.state;

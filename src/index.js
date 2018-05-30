@@ -35,7 +35,6 @@ ReactDOM.render(
             <Fragment>
                 <Route path="/" component={App}/>
                 <Route path="/" exact component={IndexPage}/>
-                <Route path="/CheckNumber" component={CheckNumber}/>
                 <Route path="/getinfo" component={ViewInfo}/>
                 <Route exact path="/SignIn" component={SignIn}/>
                 <Route exact path="/SignUp" component={SignUp}/>

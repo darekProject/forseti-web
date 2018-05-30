@@ -8,25 +8,18 @@ import './CommentsModal.css'
 
 class CommentsModal extends Component {
 
-    renderField = ({input, label, type, meta: {touched, error, warning}}) => (
-        <Fragment>
-            <input {...input} placeholder={label} type={type}/>
-            {touched && ((error && <span className="error-info">{error}</span>) || (warning &&
-                <span className="error-info">{warning}</span>))}
-        </Fragment>
-    );
-
-    renderFieldText = ({input, label, type, meta: {touched, error, warning}}) => (
-        <Fragment>
+    renderFieldText = ({input, label, type, meta: {touched, error, warning}}) => {
+        return <Fragment>
             <textarea {...input} placeholder={label} type={type}></textarea>
             {touched && ((error && <span className="error-data">{error}</span>) || (warning &&
                 <span className="error-data">{warning}</span>))}
         </Fragment>
-    );
+    };
 
     render() {
         const {handleSubmit} = this.props;
-
+        console.log(this.props.accountNumber);
+        console.log(this.props);
         return (
             <Modal visible={this.props.modalVisible} onClickBackdrop={() => this.props.modalBackdropClicked()}>
                 <div className="modal-header">
@@ -38,12 +31,10 @@ class CommentsModal extends Component {
                               onSubmit={handleSubmit((values) => this.props.handleSubmitAddComments(values))}>
                             <div className="group-wrapper">
                                 <label>Account`s number:</label>
-                                <div>
-                                    <Field type="text"
-                                           name="number"
-                                           component={this.renderField}
-                                           value={this.props.accountNumber}
-                                           label="Account number..."/>
+                                <div className="number-modal">
+                                    <p>
+                                        {this.props.accountNumber}
+                                    </p>
                                 </div>
                             </div>
                             <div className="group-wrapper">
@@ -71,9 +62,7 @@ class CommentsModal extends Component {
 
 const validate = values => {
     const errors = {};
-    if (!values.number) {
-        errors.number = 'Give the number'
-    } else if (!values.comment) {
+    if (!values.comment) {
         errors.comment = 'Give a message!';
     }
     return errors

@@ -3,12 +3,6 @@ import {getUserName} from '../../../utils/utlis';
 import './Comment.css';
 
 class Comment extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = '';
-    }
-
     renderRemoveBtn = () => {
         const userName = getUserName();
         const {id, removeComment} = this.props;
@@ -28,7 +22,7 @@ class Comment extends Component {
                         <img src="images/user-icon.png" alt=""/>
                         <div>
                             <p>{this.props.userName}</p>
-                            <p className="timestamp">{this.props.timestamp}</p>
+                            <p className="timestamp">{new Date(this.props.timestamp).toLocaleString()}</p>
                         </div>
                     </header>
                     <article>
