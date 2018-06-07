@@ -1,5 +1,13 @@
 import axios from 'axios';
-import {setToken, removeToken, setUserName, getToken, removeUserName} from '../utils/utlis';
+import {
+    setToken,
+    removeToken,
+    setUserName,
+    getToken,
+    removeUserName,
+    setAdminPermission,
+    removeAdminPermission
+} from '../utils/utlis';
 import {
     NUMBER_ERROR,
     NUMBER_INFO,
@@ -9,7 +17,7 @@ import {
     AUTH_USER,
     USER_ADDED,
     UNAUTH_USER,
-    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES
+    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES,AUTH_ADMIN
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -58,7 +66,16 @@ export const signInUser = ({username, password}) => async dispatch => {
 
         setToken(userData.data.Authorization);
         setUserName(userData.data.username);
-        dispatch({type: AUTH_USER, payload: userData.data});
+        if(userData.data.isAdmin === "true") {
+            setAdminPermission();
+        }
+
+        if(userData.data.isAdmin === "true") {
+            dispatch({type: AUTH_ADMIN, payload: userData.data});
+        } else {
+            dispatch({type: AUTH_USER, payload: userData.data});
+        }
+
 
     } catch (e) {
         console.log(e);
@@ -69,6 +86,7 @@ export const signInUser = ({username, password}) => async dispatch => {
 export const signOutUser = () => {
     removeToken();
     removeUserName();
+    removeAdminPermission();
     return {type: UNAUTH_USER};
 };
 
