@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import User from "../../comonents/UsersDTO/UserDTO";
+import {getAdminPermission} from "../../utils/utlis";
 
+import './AdminPage.css'
 
 class AdminPage extends Component {
 
@@ -14,7 +16,8 @@ class AdminPage extends Component {
     }
 
     componentWillMount() {
-        if (!this.props.isAdmin) {
+        const isAdmin = getAdminPermission();
+        if (!isAdmin) {
             this.props.history.push('/');
         }
     }
@@ -29,12 +32,21 @@ class AdminPage extends Component {
         this.props.getUsers();
     }
 
+    removeUser = username => {
+        const {allUsers} = this.state;
+        const userIndex = allUsers.findIndex(user => user === username);
+        allUsers.splice(userIndex, 1);
+
+        this.setState({allUsers})
+    };
+
     renderUsers = () => {
-        const {users} = this.props;
+        const {users} = this.state;
         if (users) {
             return users.map(user => {
                 const props = {
-                    userName: user.userName
+                    userName: user,
+                    removeUser: username => this.renderUsers(username)
                 };
                 return <User {...props}/>
             });
@@ -44,18 +56,24 @@ class AdminPage extends Component {
     render() {
         return (
             <div className="container-fluid users">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <h1>All Users:</h1>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 users-title">
+                            <h1>All Users:</h1>
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    {this.renderUsers()}
+                    <div className="row">
+                        {this.renderUsers()}
+                    </div>
                 </div>
             </div>
         )
     }
 }
+
+AdminPage.defaultProps = {
+    isAdmin: true
+};
 
 const mapStateToProps = state => {
     return {

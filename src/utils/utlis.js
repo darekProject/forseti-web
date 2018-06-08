@@ -12,6 +12,8 @@ export const getToken = () => localStorage.getItem(TOKEN);
 
 export const getUserName = () => localStorage.getItem(USER_NAME);
 
+export const getAdminPermission = () => localStorage.getItem(ADMIN);
+
 export const removeToken = () => localStorage.removeItem(TOKEN);
 
 export const removeUserName = () => localStorage.removeItem(USER_NAME);

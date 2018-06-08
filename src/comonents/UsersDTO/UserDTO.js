@@ -1,11 +1,13 @@
 import React from 'react';
 
+import './UserDTO.css'
+
 const User = props => {
   return (
-      <div className="col-lg-12">
+      <div className="col-lg-12 userDTO">
           <div>
               <img src="/images/user-icon.png" alt=""/>
-              <p>{props.userName}</p>
+              <p><span>Username:</span> {props.userName}</p>
           </div>
           <button><img src="/images/remove.png" alt=""/></button>
       </div>

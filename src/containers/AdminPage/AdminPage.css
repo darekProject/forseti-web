@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
+.users {
+  min-height: 100vh; }
+  .users .users-title {
+    margin: 50px 0;
+    background: #ffffff;
+    padding: 30px;
+    font-family: "Lato", sans-serif;
+    border-radius: 8px; }

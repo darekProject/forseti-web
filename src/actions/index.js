@@ -17,7 +17,7 @@ import {
     AUTH_USER,
     USER_ADDED,
     UNAUTH_USER,
-    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES,AUTH_ADMIN
+    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -66,11 +66,12 @@ export const signInUser = ({username, password}) => async dispatch => {
 
         setToken(userData.data.Authorization);
         setUserName(userData.data.username);
-        if(userData.data.isAdmin === "true") {
+        console.log(userData.data);
+        if (userData.data.isAdmin === "true") {
             setAdminPermission();
         }
 
-        if(userData.data.isAdmin === "true") {
+        if (userData.data.isAdmin === "true") {
             dispatch({type: AUTH_ADMIN, payload: userData.data});
         } else {
             dispatch({type: AUTH_USER, payload: userData.data});
@@ -155,3 +156,18 @@ export const getActivities = () => async dispatch => {
         console.error(e);
     }
 };
+
+export const getUsers = () => async dispatch => {
+    try {
+        const {data: {users: users}} = await axios.get(`${ROOT_URL}/api/admin/userslist/`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+        console.log(users);
+
+        dispatch({type: GET_ALL_USERS, payload: users});
+    } catch (e) {
+        console.error(e);
+    }
+}
