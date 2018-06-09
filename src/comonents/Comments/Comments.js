@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
 import Comment from "./Comment/Comment";
 import CommentsModal from '../CommentsModal/CommentsModal';
 
 import './Comments.css'
-import {getToken, getUserName} from "../../utils/utlis";
+import {getToken} from "../../utils/utlis";
 
 class Comments extends Component {
 

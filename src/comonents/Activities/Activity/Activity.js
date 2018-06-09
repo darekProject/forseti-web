@@ -10,6 +10,8 @@ const getImgPerActivity = (type) => {
             return <img src="images/thumb-up.png" alt=""/>;
         case 'thumb down':
             return <img className="rotate-180" src="images/thumb-up.png" alt=""/>;
+        default:
+            return null
     }
 };
 

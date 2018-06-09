@@ -159,7 +159,7 @@ export const getActivities = () => async dispatch => {
 
 export const getUsers = () => async dispatch => {
     try {
-        const {data: {users: users}} = await axios.get(`${ROOT_URL}/api/admin/userslist/`, {
+        const {data: {users}} = await axios.get(`${ROOT_URL}/api/admin/userslist/`, {
             headers: {
                 'Authorization': `${getToken()}`
             }

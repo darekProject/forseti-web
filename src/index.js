@@ -13,7 +13,6 @@ import './index.css';
 import App from './containers/App';
 import SignIn from './comonents/SignIn/SignIn';
 import SignUp from './comonents/SignUp/SignUp';
-import CheckNumber from "./containers/CheckNumber/CheckNumber";
 import ViewInfo from "./containers/ViewInfo/ViewInfo";
 import Activities from "./comonents/Activities/Activities";
 import IndexPage from "./comonents/IndexPage/IndexPage";

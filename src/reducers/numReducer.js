@@ -1,6 +1,5 @@
 import {
     NUMBER_ERROR,
-    NUMBER_OK,
     THUMBS_ERROR,
     THUMBS_UPDATA,
     NUMBER_INFO,
