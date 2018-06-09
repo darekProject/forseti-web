@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions';
 
 import './Header.css';
-import {getToken, getUserName} from "../../utils/utlis";
+import {getAdminPermission, getToken, getUserName} from "../../utils/utlis";
 
 class Header extends Component {
 
@@ -59,6 +59,9 @@ class Header extends Component {
                         </li>
                         <li className="nav-item">
                             {getToken() ? <a className="nav-link" href="/getactivities">Activities</a> : null}
+                        </li>
+                        <li className="nav-item">
+                            {getAdminPermission() ? <a className="nav-link" href="/admin/getUser">Users</a> : null}
                         </li>
                     </ul>
                     <div className="navbar-collapse collapse">

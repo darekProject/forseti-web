@@ -1,0 +1,68 @@
+@import "../../styles/_variables.sass"
+
+.user-dto
+  min-height: calc(100vh - 80px)
+  .user-dto-title
+    h1
+      font-family: $font-can
+      font-size: 26px
+      margin: 20px 0
+      background: #ffffff
+      padding: 10px
+      border-radius: 8px
+
+.username-dto
+  margin: 50px 0
+  background: #ffffff
+  padding: 20px
+  border-radius: 8px
+  h1
+    font-family: $font-can
+    font-size: 22px
+    font-weight: 600
+    background: #64B5F6
+    padding: 5px 15px
+    color: #ffffff
+    margin: 0
+    border-radius: 8px
+
+.user-dto-content
+  border-radius: 8px
+  font-family: $font-can
+  padding: 20px
+  margin: 0
+  & > .row > .col-lg-12
+    p
+      padding: 20px
+      background: #ffffff
+      border-radius: 8px
+      margin-top: 20px
+    & > div
+      padding: 20px
+      background: #ffffff
+      margin-bottom: 20px
+      border-radius: 8px
+      position: relative
+      .btn-remove
+        background: none
+        border: none
+        cursor: pointer
+        img
+          height: 30px
+          position: absolute
+          top: 15px
+          right: 15px
+      p
+        padding: 0
+        border-radius: 0
+        background: transparent
+        display: flex
+        span
+          display: block
+          font-weight: 600
+          color: #ffffff
+          width: 80px
+          background: #64B5F6
+          margin-right: 15px
+          text-align: center
+          border-radius: 3px

@@ -25,7 +25,8 @@
       background: #64B5F6;
       color: #ffffff;
       padding: 5px 15px;
-      border-radius: 8px; }
+      border-radius: 8px;
+      cursor: pointer; }
       .userDTO div p span {
         font-weight: 600;
         margin-right: 10px; }

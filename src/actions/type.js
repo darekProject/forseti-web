@@ -17,3 +17,4 @@ export const OPEN_MODAL = 'open_modal';
 export const GET_ACTIVITIES = 'get_activities';
 
 export const GET_ALL_USERS = 'get_all_users';
+export const GET_USER = 'get_user';

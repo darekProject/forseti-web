@@ -17,10 +17,10 @@ import ViewInfo from "./containers/ViewInfo/ViewInfo";
 import Activities from "./comonents/Activities/Activities";
 import IndexPage from "./comonents/IndexPage/IndexPage";
 import Redirect from "./comonents/AuthHoC/AuthHoC";
-
-import reducers from './reducers';
+import UserDTOPage from "./containers/UserDTOPage/UserDTOPage";
 import AdminPage from "./containers/AdminPage/AdminPage";
 
+import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
@@ -40,6 +40,7 @@ ReactDOM.render(
                 <Route exact path="/SignUp" component={SignUp}/>
                 <Route path="/getactivities" component={Redirect(Activities)}/>
                 <Route path="/admin/getUser" component={Redirect(AdminPage)}/>
+                <Route path="/admin/user/:user" component={Redirect(UserDTOPage)} />
             </Fragment>
         </BrowserRouter>
     </Provider>,

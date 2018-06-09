@@ -14,7 +14,9 @@ class AdminPage extends Component {
         this.state = {
             users: null,
             username: '',
-            modalVisible: false
+            modalVisible: false,
+            filteredUsers: [],
+            filterActive: false
         }
     }
 
@@ -27,7 +29,14 @@ class AdminPage extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.allUsers) {
-            this.setState({users: nextProps.allUsers})
+            const users = [];
+
+            nextProps.allUsers.map(user => {
+                if (user) {
+                    users.push(user);
+                }
+            });
+            this.setState({users})
         }
     }
 
@@ -43,13 +52,27 @@ class AdminPage extends Component {
         this.setState({users});
     };
 
+    showDTOUser = username => {
+        this.props.history.push(`/admin/user/${username}`);
+    };
+
     renderUsers = () => {
-        const {users} = this.state;
-        if (users) {
+        const {users, filteredUsers, filterActive} = this.state;
+        if (users && !filterActive) {
             return users.map(user => {
                 const props = {
                     userName: user,
-                    removeUser: username => this.showModalToConfirmDel(username)
+                    removeUser: username => this.showModalToConfirmDel(username),
+                    showDTOUser: username => this.showDTOUser(username)
+                };
+                return <User {...props}/>
+            });
+        } else {
+            return filteredUsers.map(user => {
+                const props = {
+                    userName: user,
+                    removeUser: username => this.showModalToConfirmDel(username),
+                    showDTOUser: username => this.showDTOUser(username)
                 };
                 return <User {...props}/>
             });
@@ -71,6 +94,17 @@ class AdminPage extends Component {
         this.setState({modalVisible: false});
     };
 
+    filterUsers = event => {
+        const {users} = this.state;
+        if (event.target.value !== '') {
+            const rightUser = users.filter(user => user.toLowerCase().includes(event.target.value.toLowerCase()));
+            this.setState({filteredUsers: rightUser, filterActive: true});
+        } else {
+            this.setState({filterActive: false});
+        }
+
+    };
+
     renderModal = () => {
         return <ConfirmDeleteUserModal modalVisible={this.state.modalVisible}
                                        modalBackdropClicked={this.modalBackdropClicked}
@@ -84,8 +118,13 @@ class AdminPage extends Component {
             <div className="container-fluid users">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12 users-title">
+                        <div className="col-lg-12 users-title filters">
                             <h1>All Users:</h1>
+                            <form className="filter-name">
+                                <label>Find user: </label>
+                                <input type="text" className="filter-input"
+                                       onChange={(event) => this.filterUsers(event)}/>
+                            </form>
                         </div>
                     </div>
                     <div className="row">
@@ -109,5 +148,5 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, actions)(AdminPage);
+export default connect(mapStateToProps, actions)(AdminPage)
 

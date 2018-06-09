@@ -17,7 +17,7 @@ import {
     AUTH_USER,
     USER_ADDED,
     UNAUTH_USER,
-    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS
+    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS, GET_USER
 } from "./type";
 
 const ROOT_URL = 'http://localhost:8080';
@@ -172,6 +172,21 @@ export const getUsers = () => async dispatch => {
     }
 };
 
+export const getUser = username => async dispatch => {
+    try {
+        const {data: user} = await axios.get(`${ROOT_URL}/api/admin/user/${username}`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+        console.log(user);
+
+        dispatch({type: GET_USER, payload: user});
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 export const deleteUser = username => async dispatch => {
     try {
         await axios.delete(`${ROOT_URL}/api/admin/user/${username}`, {
@@ -180,6 +195,32 @@ export const deleteUser = username => async dispatch => {
             }
         });
         console.log("USER DELETED");
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+export const deleteThumb = (username, id) => async dispatch => {
+    try {
+        await axios.delete(`${ROOT_URL}/api/admin/user/${username}/number/${id}`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+        console.log("THUMB DELETED");
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+export const deleteComment = (username, id) => async dispatch => {
+    try {
+        await axios.delete(`${ROOT_URL}/api/admin/user/${username}/comment/${id}`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+        console.log("THUMB DELETED");
     } catch (e) {
         console.log(e);
     }
