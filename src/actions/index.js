@@ -170,4 +170,17 @@ export const getUsers = () => async dispatch => {
     } catch (e) {
         console.error(e);
     }
-}
+};
+
+export const deleteUser = username => async dispatch => {
+    try {
+        await axios.delete(`${ROOT_URL}/api/admin/user/${username}`, {
+            headers: {
+                'Authorization': `${getToken()}`
+            }
+        });
+        console.log("USER DELETED");
+    } catch (e) {
+        console.log(e);
+    }
+};

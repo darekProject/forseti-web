@@ -9,7 +9,7 @@ const User = props => {
               <img src="/images/user-icon.png" alt=""/>
               <p><span>Username:</span> {props.userName}</p>
           </div>
-          <button><img src="/images/remove.png" alt=""/></button>
+          <button onClick={() => props.removeUser(props.userName)}><img src="/images/remove.png" alt=""/></button>
       </div>
   )
 };

@@ -5,13 +5,16 @@ import User from "../../comonents/UsersDTO/UserDTO";
 import {getAdminPermission} from "../../utils/utlis";
 
 import './AdminPage.css'
+import ConfirmDeleteUserModal from './ModalConfirmDelete'
 
 class AdminPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            users: null
+            users: null,
+            username: '',
+            modalVisible: false
         }
     }
 
@@ -33,11 +36,11 @@ class AdminPage extends Component {
     }
 
     removeUser = username => {
-        const {allUsers} = this.state;
-        const userIndex = allUsers.findIndex(user => user === username);
-        allUsers.splice(userIndex, 1);
-
-        this.setState({allUsers})
+        const {users} = this.state;
+        const userIndex = users.findIndex(user => user === username);
+        users.splice(userIndex, 1);
+        this.props.deleteUser(username);
+        this.setState({users});
     };
 
     renderUsers = () => {
@@ -46,11 +49,34 @@ class AdminPage extends Component {
             return users.map(user => {
                 const props = {
                     userName: user,
-                    removeUser: username => this.renderUsers(username)
+                    removeUser: username => this.showModalToConfirmDel(username)
                 };
                 return <User {...props}/>
             });
         }
+    };
+
+    showModalToConfirmDel = username => {
+        this.setState({username}, () => {
+            this.switchModal();
+        })
+    };
+
+    switchModal = () => {
+        const {modalVisible} = this.state;
+        this.setState({modalVisible: !modalVisible});
+    };
+
+    modalBackdropClicked = () => {
+        this.setState({modalVisible: false});
+    };
+
+    renderModal = () => {
+        return <ConfirmDeleteUserModal modalVisible={this.state.modalVisible}
+                                       modalBackdropClicked={this.modalBackdropClicked}
+                                       switchModal={this.switchModal}
+                                       userName={this.state.username}
+                                       removeUser={username => this.removeUser(username)}/>
     };
 
     render() {
@@ -66,6 +92,7 @@ class AdminPage extends Component {
                         {this.renderUsers()}
                     </div>
                 </div>
+                {this.renderModal()}
             </div>
         )
     }

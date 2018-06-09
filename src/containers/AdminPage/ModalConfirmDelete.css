@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Cantarell:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
+.delete-user p {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  text-align: center; }
+
+.delete-user .confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .delete-user .confirm-btn button {
+    font-family: "Lato", sans-serif; }
+  .delete-user .confirm-btn button:first-child {
+    margin-right: 20px; }
