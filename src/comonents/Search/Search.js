@@ -17,7 +17,7 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 class Search extends Component {
 
     onSubmitForm = formProps => {
-       this.props.handleSearch(formProps);
+        this.props.handleSearch(formProps);
     };
 
     render() {
@@ -47,13 +47,17 @@ const validate = values => {
     const errors = {};
     if (!values.number) {
         errors.number = 'Give the number'
-    } else if (values.number) {
-        const regexNumber = /\d+/;
-        if (!regexNumber.test(values.number.trim())) {
+    }
+    if (values.number && values.number.trim().split(" ").join('').length !== 26) {
+        errors.number = 'The number is incorrect!'
+    }
+    if (values.number) {
+        const regexNumber = /^[0-9]*$/;
+        if (!regexNumber.test(values.number.trim().split(" ").join(''))) {
             errors.number = 'Account number have only number!'
         }
     }
-    return errors
+    return errors;
 };
 
 // const reduxFormSearch = reduxForm({

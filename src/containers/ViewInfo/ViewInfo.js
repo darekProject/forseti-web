@@ -42,6 +42,7 @@ class ViewInfo extends Component {
     };
 
     handleFromSearch = ({number}) => {
+        number = number.trim().split(" ").join('');
         this.props.getInfoAboutNumber({number});
         const {bankName, outpost, address, postal, phone} = getDataPerNumber(number);
         this.setState({
