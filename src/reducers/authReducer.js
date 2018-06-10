@@ -12,14 +12,16 @@ export default function (state = {}, action) {
                 ...state,
                 authenticated: true,
                 authUser: action.payload,
-                admin: false
+                admin: false,
+                userAdded: true
             };
         case AUTH_ADMIN: {
             return {
                 ...state,
                 authenticated: true,
                 authUser: action.payload,
-                admin: true
+                admin: true,
+                userAdded: true
             };
         }
         case AUTH_ERROR:
@@ -31,7 +33,8 @@ export default function (state = {}, action) {
             return {
                 ...state,
                 authenticated: false,
-                admin: false
+                admin: false,
+                userAdded: false
             };
         default:
             return state;

@@ -48,7 +48,25 @@ export const signUpUser = ({username, email, password}) => async dispatch => {
             password
         });
 
-        dispatch({type: USER_ADDED});
+        const userData = await axios.post(`${ROOT_URL}/login`,
+            {
+                username,
+                password
+            });
+
+        setToken(userData.data.Authorization);
+        setUserName(userData.data.username);
+        console.log(userData.data);
+        if (userData.data.isAdmin === "true") {
+            setAdminPermission();
+        }
+
+        if (userData.data.isAdmin === "true") {
+            dispatch({type: AUTH_ADMIN, payload: userData.data});
+        } else {
+            dispatch({type: AUTH_USER, payload: userData.data});
+        }
+        // dispatch({type: USER_ADDED});
     } catch (e) {
         return dispatch(authError('Username already exists in the database'));
     }

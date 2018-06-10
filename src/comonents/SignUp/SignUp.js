@@ -35,7 +35,7 @@ class SignUp extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.userAdded) {
-            this.props.history.push('/signin');
+            this.props.history.push('/');
         }
     }
 
@@ -86,13 +86,18 @@ class SignUp extends Component {
 
 const validate = values => {
     const errors = {};
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!values.username) {
         errors.username = 'Add your username!'
     } else if (!values.email) {
         errors.email = 'Add your email!'
+    } else if (values.email && !re.test(values.email)) {
+        errors.email = 'Email is incorrect!'
     } else if (!values.password) {
         errors.password = 'Add your password!'
+    } else if (values.password.length < 5) {
+        errors.password = 'Password is to short!'
     } else if (!values.confirmPassword) {
         errors.confirmPassword = 'Confirm your password!'
     } else if (values.confirmPassword) {
