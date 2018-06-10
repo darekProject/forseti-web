@@ -90,12 +90,12 @@ class UserDTOPage extends Component {
 
 
         for (let [number, thumbs] of thumbsMap.entries()) {
-            const div = <div className="col-lg-12" id={`${thumbs.id}`}>
+            const div = <div className="col-lg-12" id={`${number}`}>
                 <div>
                     <p className="number"><span>Number:</span> {number}</p>
                     <p className="content"><span>Thumb:</span> {this.getImgPerActivity(thumbs.thumb)}</p>
                     <p className="date"><span>Date:</span> {new Date(thumbs.timeStamp).toLocaleString()}</p>
-                    <button className='btn-remove' onClick={() => this.removeThumb(username, thumbs.id)}><img src="/images/remove.png" alt=""/></button>
+                    <button className='btn-remove' onClick={() => this.removeThumb(username, number, thumbs.thumb)}><img src="/images/remove.png" alt=""/></button>
                 </div>
             </div>;
             thumbsArray.push(div);
@@ -117,11 +117,11 @@ class UserDTOPage extends Component {
         this.setState({comments});
     };
 
-    removeThumb = (username, id) => {
+    removeThumb = (username, number, thumb) => {
         const {thumbs} = this.state;
-        const thumbIndex = thumbs.findIndex(thumb => parseInt(thumb.props.id) === id);
+        const thumbIndex = thumbs.findIndex(thumb => parseInt(thumb.props.id) === number);
         thumbs.splice(thumbIndex, 1);
-        this.props.deleteThumb(username, id);
+        this.props.deleteThumb(username, number, thumb);
 
         this.setState({thumbs});
     };

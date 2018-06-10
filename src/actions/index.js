@@ -200,9 +200,10 @@ export const deleteUser = username => async dispatch => {
     }
 };
 
-export const deleteThumb = (username, id) => async dispatch => {
+export const deleteThumb = (username, number, thumb) => async dispatch => {
     try {
-        await axios.delete(`${ROOT_URL}/api/admin/user/${username}/number/${id}`, {
+        await axios.delete(`${ROOT_URL}/api/admin/user/${username}/number/${number}`, {
+            params: {thumb},
             headers: {
                 'Authorization': `${getToken()}`
             }
