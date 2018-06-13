@@ -110,7 +110,7 @@ class UserDTOPage extends Component {
 
     removeComment = (username, id) => {
         const {comments} = this.state;
-        const commentIndex = comments.findIndex(comment => parseInt(comment.props.id) === id);
+        const commentIndex = comments.findIndex(comment => parseInt(comment.props.id, 10) === id);
         comments.splice(commentIndex, 1);
         this.props.deleteComment(username, id);
 
@@ -119,7 +119,7 @@ class UserDTOPage extends Component {
 
     removeThumb = (username, number, thumb) => {
         const {thumbs} = this.state;
-        const thumbIndex = thumbs.findIndex(thumb => parseInt(thumb.props.id) === number);
+        const thumbIndex = thumbs.findIndex(thumb => parseInt(thumb.props.id, 10) === number);
         thumbs.splice(thumbIndex, 1);
         this.props.deleteThumb(username, number, thumb);
 

@@ -15,12 +15,11 @@ import {
     THUMBS_ERROR,
     AUTH_ERROR,
     AUTH_USER,
-    USER_ADDED,
     UNAUTH_USER,
     OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS, GET_USER
 } from "./type";
 
-const ROOT_URL = 'http://localhost:8080';
+const ROOT_URL = 'http://77.55.213.42:8080';
 
 export const getInfoAboutNumber = ({number}) => async dispatch => {
     try {
