@@ -16,7 +16,7 @@ import {
     AUTH_ERROR,
     AUTH_USER,
     UNAUTH_USER,
-    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS, GET_USER
+    OPEN_MODAL, ADD_COMMENTS, GET_ACTIVITIES, AUTH_ADMIN, GET_ALL_USERS, GET_USER, CLEAR_ERROR
 } from "./type";
 
 const ROOT_URL = 'http://77.55.213.42:8080';
@@ -113,6 +113,10 @@ export const authError = (error) => {
         type: AUTH_ERROR,
         payload: error
     }
+};
+
+export const clearErrorBuffor = () => dispatch => {
+  dispatch({type: CLEAR_ERROR});
 };
 
 export const sendThumbs = (number, value) => async dispatch => {

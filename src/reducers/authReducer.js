@@ -1,4 +1,4 @@
-import {AUTH_USER, USER_ADDED, AUTH_ERROR, UNAUTH_USER, AUTH_ADMIN} from '../actions/type';
+import {AUTH_USER, USER_ADDED, AUTH_ERROR, UNAUTH_USER, AUTH_ADMIN, CLEAR_ERROR} from '../actions/type';
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -34,7 +34,13 @@ export default function (state = {}, action) {
                 ...state,
                 authenticated: false,
                 admin: false,
-                userAdded: false
+                userAdded: false,
+                error: ''
+            };
+        case CLEAR_ERROR:
+            return {
+                ...state,
+                error: ''
             };
         default:
             return state;

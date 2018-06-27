@@ -39,6 +39,10 @@ class SignUp extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.clearErrorBuffor();
+    }
+
     handleFormSubmit = ({username, email, password}) => {
         this.props.signUpUser({username, email, password});
     };

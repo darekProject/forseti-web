@@ -18,3 +18,5 @@ export const GET_ACTIVITIES = 'get_activities';
 
 export const GET_ALL_USERS = 'get_all_users';
 export const GET_USER = 'get_user';
+
+export const CLEAR_ERROR = 'clear_error';
